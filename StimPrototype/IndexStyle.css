@@ -1,0 +1,169 @@
+/* Color Vars */
+:root{
+    --logo-dark: rgb(138, 7, 7);
+    --logo-light: rgb(242,242,242);
+}
+/* Body Color */
+body{
+    background-color: rgb(242,242,242);
+    margin: 0px;
+    text-align: center;
+}
+
+.linkStyle{
+    display: inline-block;
+    text-align: left;
+}
+/* Title Font */
+.tfont{
+    font-family: 'Roboto', sans-serif, serif;
+}
+/* Content Font */
+.cfont{
+    font-family: 'Karla', sans-serif, serif;
+}
+/* Page Title */
+.ptitle{
+    text-align: center;
+}
+/* Page Content */
+.pcontent{
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 1.6em;
+}
+
+/* Drawing */
+#logo{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    top: 40px;
+    rotate: 90deg;
+    transition: 1s ease-in-out;
+}
+#circle{
+    background-color: var(--logo-dark, rgb(48,48,48) );
+    position: absolute;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+#circle2{
+    background-color: var(--logo-light, rgb(242,242,242) );
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    bottom: 25px;
+    left: 40px;
+    border-radius: 50%;
+}
+#circle3{
+    background-color: var(--logo-light, rgb(242,242,242) );
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    top: 26px;
+    right: 20px;
+    border-radius: 50%;
+}
+#brace1{
+    background-color: var(--logo-light, rgb(242,242,242) );
+    position: absolute;
+    width: 100px;
+    height: 35px;
+    bottom: 46px;
+    left: -20px;
+    transform: rotate(202deg);
+}
+#brace2{
+    background-color: var(--logo-light, rgb(242,242,242) );
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    right: 60px;
+    bottom: 67px;
+    transform: rotate(312deg);
+}
+#brace2::before{
+    content:'';
+    background-color: var(--logo-light, rgb(242,242,242) );
+    position: absolute;
+    width: 55px;
+    height: 20px;
+    bottom: 25px;
+    left: 20px;
+    transform: rotate(350deg);
+}
+#brace2::after{
+    content:'';
+    background-color: var(--logo-light, rgb(242,242,242) );
+    position: absolute;
+    width: 55px;
+    height: 20px;
+    bottom: -4px;
+    left: 20px;
+    transform: rotate(9deg);
+}
+#void-circle1{
+    background-color: var(--logo-dark, rgb(48,48,48) );
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    bottom: 24px;
+    left: 40px;
+    border-radius: 50%;
+    transform: scale(0.8);
+}
+#void-circle1::before{
+    content: '';
+    background-color: var(--logo-light, rgb(242,242,242) );
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transform: scale(0.76);
+}
+#void-circle1::after{
+    content: '';
+    background-color: var(--logo-light, rgb(242,242,242) );
+    position: absolute;
+    width: 50px;
+    height: 42px;
+    left: -10px;
+    bottom: 8.6px;
+    border-radius: 38%;
+    transform: rotate(25deg);
+}
+#void-circle2{
+    background-color: var(--logo-dark, rgb(42,42,42) );
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    top: 32px;
+    right: 26.5px;
+    border-radius: 50%;
+    box-shadow: aliceblue;
+}
+#void-circle2::before{
+    content: '';
+    background-color: var(--logo-light, rgb(242,242,242) );
+    position: absolute;
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    transform: scale(0.83);
+}
+#logo:hover{
+    transform: scale(1.2);
+    transition: 1s ease-in-out;
+}
+#steam-name{
+    color: rgb(48,48,48);
+    font-size: 2.1em;
+    font-weight: 800;
+    text-align: center;
+    padding-top: 20px;
+}
