@@ -93,12 +93,12 @@ header
 		font-size: 2em;
 
 		/* Media querries for phones */
-		@media only screen and (max-width: 600px) 
+		@media only screen and (max-width: 645px) 
 		{
 			font-size: 1.33em;
 		};
 
-		@media only screen and (max-width: 420px) 
+		@media only screen and (max-width: 460px) 
 		{
 			font-size: 1em;
 		};
