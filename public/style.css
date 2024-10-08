@@ -49,6 +49,10 @@ nav
 header
 {
 	background-color: var(--background-tertiary);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 42vh;
 
 	*
 	{
@@ -60,6 +64,11 @@ header
 h1, h2, h3 
 {
 	color: var(--font-highlight);
+}
+
+h1
+{
+	font-size: 6em;
 }
 
 h2
