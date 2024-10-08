@@ -105,7 +105,7 @@ main
 	}
 }
 
-.project-summary
+.card
 {
 	display: grid;
 	gap: 2rem;
@@ -133,7 +133,7 @@ main
 	}
 }
 
-.project-summary:nth-child(odd) 
+.card:nth-of-type(odd)
 {
 	grid-template-columns: auto 250px;
 	grid-template-areas: "content image";
