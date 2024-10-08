@@ -124,16 +124,17 @@ main
 		width: 100%;
 	}
 
-	span
+	> span
 	{
 		grid-area: content;
+		padding: 3rem;
 	}
 
-	a
+	.project-read-more
 	{
 		display: flex;
-		justify-content: flex-end;
-		padding-right: 2rem;
+		flex-direction: column;
+		align-items: flex-end;
 	}
 }
 
@@ -141,11 +142,10 @@ main
 {
 	grid-template-columns: auto 250px;
 	grid-template-areas: "content image";
-	a
+
+	.project-read-more
 	{
-		padding: 0;
-		justify-content: flex-start;
-		padding-left: 1rem;
+		align-items: flex-start;
 	}
 }
 
