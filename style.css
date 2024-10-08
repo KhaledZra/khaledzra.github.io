@@ -102,6 +102,11 @@ main
 	section
 	{
 		margin: 2rem 0;
+
+		>*
+		{
+			margin: 2rem 0;
+		}
 	}
 	
 	section:not(:last-child)
@@ -122,6 +127,7 @@ main
 	align-items: center;
 	grid-template-columns: 250px auto;
 	grid-template-areas: "image content";
+
 	img
 	{
 		grid-area: image;
