@@ -16,6 +16,12 @@
 	--accent-secondary: #ff5722;
 	--accent-tertiary: #ffcc00;
 
+	--spacing-left: 2rem;
+	@media only screen and (max-width: 460px) 
+	{
+		--spacing-left: 1rem;
+	}
+	
 	/* 
 		Breakpoints 
 			small: 420px
@@ -51,37 +57,62 @@ nav
 header
 {
 	background-color: var(--background-tertiary);
+	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+
 	height: 42vh;
+
+	padding-left: var(--spacing-left);
 
 	*
 	{
 		margin: 0;
 		padding: 0;
 	}
+
+	h1 
+	{
+		font-size: 6em;
+
+		/* Media querries for phones */
+		@media only screen and (max-width: 645px) 
+		{
+			font-size: 4em;
+		};
+
+		@media only screen and (max-width: 460px) 
+		{
+			font-size: 3em;
+		};
+	}
+
+	p
+	{
+		font-size: 2em;
+
+		/* Media querries for phones */
+		@media only screen and (max-width: 600px) 
+		{
+			font-size: 1.33em;
+		};
+
+		@media only screen and (max-width: 420px) 
+		{
+			font-size: 1em;
+		};
+	}
+}
+
+main
+{
+	padding-left: var(--spacing-left);
 }
 
 h1, h2, h3 
 {
 	color: var(--font-highlight);
-}
-
-h1
-{
-	font-size: 6em;
-
-	/* Media querries for phones */
-	@media only screen and (max-width: 600px) 
-	{
-		font-size: 4em;
-	};
-
-	@media only screen and (max-width: 420px) 
-	{
-		font-size: 3em;
-	};
 }
 
 h2
