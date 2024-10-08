@@ -125,7 +125,7 @@ main
 		padding: 3rem;
 	}
 
-	.project-read-more
+	.card-read-more
 	{
 		display: flex;
 		flex-direction: column;
@@ -138,9 +138,20 @@ main
 	grid-template-columns: auto 250px;
 	grid-template-areas: "content image";
 
-	.project-read-more
+	.card-read-more
 	{
 		align-items: flex-start;
+	}
+}
+
+#about-me
+{
+	grid-template-columns: 250px auto;
+	grid-template-areas: "image content";
+
+	.card-read-more
+	{
+		align-items: flex-end;
 	}
 }
 
