@@ -1,0 +1,79 @@
+:root 
+{
+	/* Background Colors */
+	--background-primary: #121212;
+	--background-secondary: #1e1e1e;
+	--background-tertiary: #161616;
+	
+	/* Font Colors */
+	--font-primary: #e0e0e0;
+	--font-secondary: #b3b3b3;
+	--font-highlight: #00a8ff;
+	--font-link: #7cb3ab;
+
+	/* Accent Colors */
+	--accent-primary: #00bfa6;
+	--accent-secondary: #ff5722;
+	--accent-tertiary: #ffcc00;
+
+	/* Breakpoints */
+	--breakpoint-small: 360px;
+	--breakpoint-medium: 600px;
+}
+
+body 
+{
+	background-color: var(--background-primary);
+	color: var(--font-primary);
+	margin: 0;
+}
+
+nav
+{
+	background-color: var(--background-secondary);
+	margin: 0;
+	padding: 0;
+
+	>*
+	{
+		margin: 0;
+		padding: 0;
+	}
+
+	a
+	{
+		color: var(--accent-tertiary);
+	}
+}
+
+header
+{
+	background-color: var(--background-tertiary);
+
+	*
+	{
+		margin: 0;
+		padding: 0;
+	}
+}
+
+h1, h2, h3 
+{
+	color: var(--font-highlight);
+}
+
+h2
+{
+	text-decoration: underline var(--accent-primary);
+}
+
+a 
+{
+	color: var(--font-link);
+	text-decoration: none;
+}
+
+a:hover 
+{
+	color: var(--accent-secondary);
+}
