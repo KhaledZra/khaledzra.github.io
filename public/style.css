@@ -15,12 +15,6 @@
 	--accent-primary: #00bfa6;
 	--accent-secondary: #ff5722;
 	--accent-tertiary: #ffcc00;
-
-	--spacing-left: 2rem;
-	@media only screen and (max-width: 460px) 
-	{
-		--spacing-left: 1rem;
-	}
 	
 	/* 
 		Breakpoints 
@@ -75,39 +69,18 @@ header
 	h1 
 	{
 		font-size: 6em;
-
-		/* Media querries for phones */
-		@media only screen and (max-width: 645px) 
-		{
-			font-size: 4em;
-		};
-
-		@media only screen and (max-width: 460px) 
-		{
-			font-size: 3em;
-		};
 	}
 
 	p
 	{
 		font-size: 2em;
-
-		/* Media querries for phones */
-		@media only screen and (max-width: 645px) 
-		{
-			font-size: 1.33em;
-		};
-
-		@media only screen and (max-width: 460px) 
-		{
-			font-size: 1em;
-		};
 	}
 }
 
 main
 {
-	padding-left: var(--spacing-left);
+	max-width: 960px;
+	margin: 0 auto;
 }
 
 h1, h2, h3 
