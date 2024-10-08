@@ -16,9 +16,11 @@
 	--accent-secondary: #ff5722;
 	--accent-tertiary: #ffcc00;
 
-	/* Breakpoints */
-	--breakpoint-small: 360px;
-	--breakpoint-medium: 600px;
+	/* 
+		Breakpoints 
+			small: 420px
+			medium: 600px
+	*/
 }
 
 body 
@@ -70,6 +72,7 @@ h1
 {
 	font-size: 6em;
 
+	/* Media querries for phones */
 	@media only screen and (max-width: 600px) 
 	{
 		font-size: 4em;
