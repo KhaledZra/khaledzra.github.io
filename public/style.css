@@ -18,8 +18,7 @@
 	
 	/* 
 		Breakpoints 
-			small: 420px
-			medium: 600px
+			666px
 	*/
 }
 
@@ -58,12 +57,11 @@ header
 
 	height: 42vh;
 
-	padding-left: var(--spacing-left);
-
 	*
 	{
-		margin: 0;
+		margin: 0 auto;
 		padding: 0;
+		text-align: center;
 	}
 
 	h1 
