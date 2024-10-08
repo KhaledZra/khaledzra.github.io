@@ -47,6 +47,28 @@ nav
 	}
 }
 
+.hazard-background 
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 32px;
+	color: white;
+	padding: 5px;
+	background-image: repeating-linear-gradient(-55deg,
+			#000,
+			#000 20px,
+			#af7b00 20px,
+			#af7b00 40px);
+	p
+	{
+		font-size: 2em;
+		text-shadow: 3px 3px black;
+		color: white;
+		margin: 0 auto;
+	}
+}
+
 header
 {
 	background-color: linear-gradient(rgba(0, 191, 166, 0.2), rgb(18, 18, 18)), var(--background-tertiary);
