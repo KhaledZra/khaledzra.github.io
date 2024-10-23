@@ -1,0 +1,25 @@
+header {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+}
+
+header span:first-child {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+header span img {
+	grid-column-start: 2;
+}
+
+header span ul {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	list-style: none;
+	img {
+		width: 64px;
+	}
+}
