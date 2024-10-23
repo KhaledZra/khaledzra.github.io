@@ -15,4 +15,34 @@
 
 body {
 	background-color: var(--background-primary);
+	color: white;
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+
+	span:first-child {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+
+		img {
+			grid-column-start: 2;
+		}
+
+		ul {
+			display: flex;
+			align-items: flex-start;
+			img {
+				width: 64px;
+			}
+		}
+	}
+
+}
+
+img {
+	width: 512px;
 }
