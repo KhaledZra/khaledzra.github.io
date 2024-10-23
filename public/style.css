@@ -4,14 +4,21 @@
 	--background-secondary: #272b31;
 
 	--accent-primary: #00aad4;
-	--accent-secondary: #2ad4ff;
+	--accent-secondary: #29d4ff;
 	--accent-tertiary: #272b31;
 }
 
 * {
 	margin: 0;
 	padding: 0;
+	/*outline: dashed 1px red;*/
 }
+
+/*
+	----------------------------
+				BASE			
+	----------------------------
+*/
 
 h1 {
 	font-size: 4em;
@@ -22,21 +29,38 @@ h2 {
 	font-size: 1.5em;
 }
 
+img {
+	border-radius: 2%;
+}
+
 body {
 	background-color: var(--background-primary);
 	color: white;
 }
 
+/*
+	------------------------------
+				HEADER			
+	------------------------------
+*/
+
 header {
+
+	background-image: linear-gradient(rgba(41, 212, 255, 0.33), rgb(28, 31, 36)), url("resources/hero_image_generated.webp");
+	background-size: cover;
+
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
 	align-items: center;
 	text-align: center;
+	padding: 1rem;
+	margin-bottom: 5rem;
 }
 
 header p {
 	margin: 2rem 0;
+	max-width: 900px;
 }
 
 header span:first-child {
@@ -70,10 +94,67 @@ header span ul {
 	}
 }
 
+header span:last-child {
+	display: flex;
+	width: 100%;
+	max-width: 900px;
+}
+
+header span:last-child a {
+	color: var(--accent-secondary);
+	padding: 0 2rem;
+	text-decoration: none;
+	font-size: large;
+	margin-bottom: 2rem;
+}
+
+header span:last-child a:hover {
+	color: orange;
+}
+
+/*
+	------------------------------
+				FOOTER			
+	------------------------------
+*/
+
+footer
+{
+	background-image: linear-gradient(rgb(28, 31, 36), rgba(41, 212, 255, 0.1));
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	height: 150px;
+	margin-top: 5rem;
+}
+
+/*
+	-------------------------------------
+				MEDIA QUERIES			
+	-------------------------------------
+*/
+
 @media screen and (max-width: 950px) {
+
 	header span:first-child {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		gap: 0;
+	}
+
+	header span ul img {
+		max-width: 48px;
+		padding: 0.5rem 1rem;
+	}
+}
+@media screen and (max-width: 500px) {
+
+	h1 {
+		font-size: 3em;
+	}
+	h2 {
+		font-size: 1em;
 	}
 }
