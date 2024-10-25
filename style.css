@@ -2,10 +2,13 @@
 
 	--background-primary: #1c1f24;
 	--background-secondary: #272b31;
+	--background-tertiary: #464d57;
 
 	--accent-primary: #00aad4;
 	--accent-secondary: #29d4ff;
 	--accent-tertiary: #272b31;
+
+	--card-height: 300px;
 }
 
 * {
@@ -36,6 +39,47 @@ img {
 body {
 	background-color: var(--background-primary);
 	color: white;
+}
+
+/*
+	--------------------------------------------
+				COSMETICS AND LAYOUT			
+	--------------------------------------------
+*/
+
+.divider-line {
+	background-color: var(--accent-secondary);
+	height: 1px;
+	width: 33%;
+	margin: 3rem auto;
+}
+
+.lang {
+	background-color: var(--background-secondary);
+	display: inline-block;
+	padding: 0.4rem 1rem;
+	border-radius: 25%;
+	color: var(--background-primary);
+}
+
+/*
+No need for this as of now
+.lang:hover {
+	background-color: var(--background-tertiary);
+}*/
+
+.lang::before {
+	color: white;
+}
+
+/* LANGUAGE CLASSES */
+
+.lang-csharp::before {
+	content: "C#";
+}
+
+.lang-cpp::before {
+	content: "C++";
 }
 
 /*
@@ -83,15 +127,14 @@ header span ul {
 	align-items: flex-start;
 	justify-content: center;
 	list-style: none;
-	
+}
 
-	img {
-		max-width: 64px;
-		min-width: 32px;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+header span ul 	img {
+	max-width: 64px;
+	min-width: 32px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 header span:last-child {
@@ -110,6 +153,104 @@ header span:last-child a {
 
 header span:last-child a:hover {
 	color: orange;
+}
+
+/*
+	-----------------------------
+				CARDS			
+	-----------------------------
+*/
+
+.card-container {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: var(--card-height);
+	grid-template-areas: "main-content sub-content";
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+/* 
+	This is basically a carbon copy of the divider class
+	But doing it this way means we don't have to change the HTML each time a new card is added
+*/
+.card:not(:last-child)::after {
+	display: block;
+	content: "";
+	background-color: var(--accent-secondary);
+	height: 1px;
+	width: 33%;
+	margin: 3rem auto;
+}
+
+.card-main-content-container {
+	grid-area: main-content;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	height: 100%;
+	overflow: hidden;
+}
+
+.card-sub-content-container {
+    grid-area: sub-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-sub-content-container img {
+    height: auto;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.card-sub-content-container ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    list-style: none;
+    flex-grow: 1;
+    max-height: 20%;
+	max-width: calc(var(--card-height) * 0.8); /* My genius knows no limit. Set to same width as img*/
+	overflow-y: none; 
+	overflow-x: auto;
+}
+
+.card-sub-content-container ul li{
+    display: flex;
+	white-space: nowrap;
+    flex-grow: 1;
+}
+
+.card-read-more a {
+	text-decoration: none;
+	color: grey;
+	text-decoration: line-through;
+}
+
+/* SCROLLBAR ADJUSTMENT */
+/* WebKit browsers */
+.card-sub-content-container ul::-webkit-scrollbar {
+    height: 8px;
+}
+
+.card-sub-content-container ul::-webkit-scrollbar-thumb {
+    background-color: var(--background-tertiary);
+}
+
+.card-sub-content-container ul::-webkit-scrollbar-track {
+    background: var(--background-secondary)
+}
+
+/* Firefox */
+.card-sub-content-container ul {
+    scrollbar-width: thin;
+    scrollbar-color: var(--background-tertiary) var(--background-secondary);
 }
 
 /*
