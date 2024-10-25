@@ -6,6 +6,8 @@
 	--accent-primary: #00aad4;
 	--accent-secondary: #29d4ff;
 	--accent-tertiary: #272b31;
+
+	--card-height: 250px;
 }
 
 * {
@@ -36,6 +38,19 @@ img {
 body {
 	background-color: var(--background-primary);
 	color: white;
+}
+
+/*
+	--------------------------------------------
+				COSMETICS AND LAYOUT			
+	--------------------------------------------
+*/
+
+.divider-line {
+	background-color: var(--accent-secondary);
+	height: 1px;
+	width: 33%;
+	margin: 0 auto;
 }
 
 /*
@@ -110,6 +125,62 @@ header span:last-child a {
 
 header span:last-child a:hover {
 	color: orange;
+}
+
+/*
+	-----------------------------
+				CARDS			
+	-----------------------------
+*/
+
+.card {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: var(--card-height);
+	grid-template-areas: "main-content sub-content";
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.card-main-content-container {
+	grid-area: main-content;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	height: 100%;
+	overflow: hidden;
+}
+
+.card-sub-content-container {
+    grid-area: sub-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-sub-content-container img {
+    height: auto;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.card-sub-content-container ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    flex-grow: 1;
+    max-height: 20%;
+    overflow: auto;
+}
+
+.card-read-more a {
+	text-decoration: none;
+	color: grey;
+	text-decoration: line-through;
 }
 
 /*
