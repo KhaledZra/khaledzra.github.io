@@ -5,7 +5,7 @@
 	--background-tertiary: #464d57;
 
 	--accent-primary: #00aad4;
-	--accent-secondary: #29d4ff;
+	--accent-primary-light: #29d4ff;
 	--accent-tertiary: #272b31;
 
 	--card-height: 300px;
@@ -25,7 +25,7 @@
 
 h1 {
 	font-size: 4em;
-	color: var(--accent-secondary);
+	color: var(--accent-primary-light);
 }
 
 h2 {
@@ -48,7 +48,7 @@ body {
 */
 
 .divider-line {
-	background-color: var(--accent-secondary);
+	background-color: var(--accent-primary-light);
 	height: 1px;
 	width: 33%;
 	margin: 3rem auto;
@@ -80,6 +80,14 @@ No need for this as of now
 
 .lang-cpp::before {
 	content: "C++";
+}
+
+.lang-opengl::before {
+	content: "OpenGL";
+}
+
+.lang-unreal::before {
+	content: "Unreal";
 }
 
 /*
@@ -137,21 +145,21 @@ header span ul 	img {
 	object-fit: cover;
 }
 
-header span:last-child {
+header address {
 	display: flex;
 	width: 100%;
 	max-width: 900px;
 }
 
-header span:last-child a {
-	color: var(--accent-secondary);
+header address a {
+	color: var(--accent-primary-light);
 	padding: 0 2rem;
 	text-decoration: none;
 	font-size: large;
 	margin-bottom: 2rem;
 }
 
-header span:last-child a:hover {
+header address a:hover {
 	color: orange;
 }
 
@@ -161,14 +169,10 @@ header span:last-child a:hover {
 	-----------------------------
 */
 
-.card-container {
-	display: grid;
-	grid-template-columns: 2fr 1fr;
-	grid-template-rows: var(--card-height);
-	grid-template-areas: "main-content sub-content";
-	max-width: 900px;
-	margin: 0 auto;
-	padding: 1rem;
+
+.card h2{
+	color: var(--accent-primary);
+	margin-bottom: 3rem;
 }
 
 /* 
@@ -178,10 +182,35 @@ header span:last-child a:hover {
 .card:not(:last-child)::after {
 	display: block;
 	content: "";
-	background-color: var(--accent-secondary);
+	background-color: var(--accent-primary-light);
 	height: 1px;
 	width: 33%;
 	margin: 3rem auto;
+}
+
+.card-container {
+
+	/*
+		If we add cool cosmetics to the card, we can add them here
+		NOT in the card class as that handles the card to card spacing 
+	*/
+
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: var(--card-height);
+	grid-template-areas: "main-content sub-content";
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+.card:nth-of-type(even) .card-container {
+	grid-template-columns: 1fr 2fr;
+	grid-template-areas: "sub-content main-content";
+}
+
+.card:nth-of-type(even) .card-container .card-read-more{
+	text-align: right;
 }
 
 .card-main-content-container {
@@ -231,6 +260,7 @@ header span:last-child a:hover {
 	text-decoration: none;
 	color: grey;
 	text-decoration: line-through;
+	margin: 0 2rem;
 }
 
 /* SCROLLBAR ADJUSTMENT */
