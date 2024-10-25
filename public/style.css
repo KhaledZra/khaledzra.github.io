@@ -161,7 +161,19 @@ header span:last-child a:hover {
 	-----------------------------
 */
 
+/*
+This exists FYI - no need to use it as of now
+.card {
+}
+*/
+
 .card-container {
+
+	/*
+		If we add cool cosmetics to the card, we can add them here
+		NOT in the card class as that handles the card to card spacing 
+	*/
+
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	grid-template-rows: var(--card-height);
