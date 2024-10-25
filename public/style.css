@@ -2,12 +2,13 @@
 
 	--background-primary: #1c1f24;
 	--background-secondary: #272b31;
+	--background-tertiary: #464d57;
 
 	--accent-primary: #00aad4;
 	--accent-secondary: #29d4ff;
 	--accent-tertiary: #272b31;
 
-	--card-height: 250px;
+	--card-height: 300px;
 }
 
 * {
@@ -50,7 +51,35 @@ body {
 	background-color: var(--accent-secondary);
 	height: 1px;
 	width: 33%;
-	margin: 0 auto;
+	margin: 3rem auto;
+}
+
+.lang {
+	background-color: var(--background-secondary);
+	display: inline-block;
+	padding: 0.4rem 1rem;
+	border-radius: 25%;
+	color: var(--background-primary);
+}
+
+/*
+No need for this as of now
+.lang:hover {
+	background-color: var(--background-tertiary);
+}*/
+
+.lang::before {
+	color: white;
+}
+
+/* LANGUAGE CLASSES */
+
+.lang-csharp::before {
+	content: "C#";
+}
+
+.lang-cpp::before {
+	content: "C++";
 }
 
 /*
@@ -98,15 +127,14 @@ header span ul {
 	align-items: flex-start;
 	justify-content: center;
 	list-style: none;
-	
+}
 
-	img {
-		max-width: 64px;
-		min-width: 32px;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+header span ul 	img {
+	max-width: 64px;
+	min-width: 32px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 header span:last-child {
@@ -170,17 +198,45 @@ header span:last-child a:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     list-style: none;
     flex-grow: 1;
     max-height: 20%;
-    overflow: auto;
+	max-width: 80%;
+	overflow-y: none; 
+	overflow-x: scroll;
+}
+
+.card-sub-content-container ul li{
+    display: flex;
+	white-space: nowrap;
+    flex-grow: 1;
 }
 
 .card-read-more a {
 	text-decoration: none;
 	color: grey;
 	text-decoration: line-through;
+}
+
+/* SCROLLBAR ADJUSTMENT */
+/* WebKit browsers */
+.card-sub-content-container ul::-webkit-scrollbar {
+    height: 8px;
+}
+
+.card-sub-content-container ul::-webkit-scrollbar-thumb {
+    background-color: var(--background-tertiary);
+}
+
+.card-sub-content-container ul::-webkit-scrollbar-track {
+    background: var(--background-secondary)
+}
+
+/* Firefox */
+.card-sub-content-container ul {
+    scrollbar-width: thin;
+    scrollbar-color: var(--background-tertiary) var(--background-secondary);
 }
 
 /*
