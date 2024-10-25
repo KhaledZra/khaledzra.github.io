@@ -168,6 +168,20 @@ header span:last-child a:hover {
 	grid-template-areas: "main-content sub-content";
 	max-width: 900px;
 	margin: 0 auto;
+	padding: 1rem;
+}
+
+/* 
+	This is basically a carbon copy of the divider class
+	But doing it this way means we don't have to change the HTML each time a new card is added
+*/
+.card:not(:last-child)::after {
+	display: block;
+	content: "";
+	background-color: var(--accent-secondary);
+	height: 1px;
+	width: 60%;
+	margin: 3rem auto;
 }
 
 .card-main-content-container {
@@ -202,9 +216,9 @@ header span:last-child a:hover {
     list-style: none;
     flex-grow: 1;
     max-height: 20%;
-	max-width: 80%;
+	max-width: calc(var(--card-height) * 0.8); /* My genius knows no limit. Set to same width as img*/
 	overflow-y: none; 
-	overflow-x: scroll;
+	overflow-x: auto;
 }
 
 .card-sub-content-container ul li{
