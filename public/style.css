@@ -5,7 +5,7 @@
 	--background-tertiary: #464d57;
 
 	--accent-primary: #00aad4;
-	--accent-secondary: #29d4ff;
+	--accent-primary-light: #29d4ff;
 	--accent-tertiary: #272b31;
 
 	--card-height: 300px;
@@ -25,7 +25,7 @@
 
 h1 {
 	font-size: 4em;
-	color: var(--accent-secondary);
+	color: var(--accent-primary-light);
 }
 
 h2 {
@@ -48,7 +48,7 @@ body {
 */
 
 .divider-line {
-	background-color: var(--accent-secondary);
+	background-color: var(--accent-primary-light);
 	height: 1px;
 	width: 33%;
 	margin: 3rem auto;
@@ -144,7 +144,7 @@ header span:last-child {
 }
 
 header span:last-child a {
-	color: var(--accent-secondary);
+	color: var(--accent-primary-light);
 	padding: 0 2rem;
 	text-decoration: none;
 	font-size: large;
@@ -161,11 +161,11 @@ header span:last-child a:hover {
 	-----------------------------
 */
 
-/*
-This exists FYI - no need to use it as of now
-.card {
+
+.card h2{
+	color: var(--accent-primary);
 }
-*/
+
 
 .card-container {
 
@@ -190,7 +190,7 @@ This exists FYI - no need to use it as of now
 .card:not(:last-child)::after {
 	display: block;
 	content: "";
-	background-color: var(--accent-secondary);
+	background-color: var(--accent-primary-light);
 	height: 1px;
 	width: 33%;
 	margin: 3rem auto;
