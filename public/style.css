@@ -161,7 +161,7 @@ header span:last-child a:hover {
 	-----------------------------
 */
 
-.card {
+.card-container {
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	grid-template-rows: var(--card-height);
@@ -180,7 +180,7 @@ header span:last-child a:hover {
 	content: "";
 	background-color: var(--accent-secondary);
 	height: 1px;
-	width: 60%;
+	width: 33%;
 	margin: 3rem auto;
 }
 
