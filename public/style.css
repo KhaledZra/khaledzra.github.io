@@ -82,6 +82,14 @@ No need for this as of now
 	content: "C++";
 }
 
+.lang-opengl::before {
+	content: "OpenGL";
+}
+
+.lang-unreal::before {
+	content: "Unreal";
+}
+
 /*
 	------------------------------
 				HEADER			
@@ -137,13 +145,13 @@ header span ul 	img {
 	object-fit: cover;
 }
 
-header span:last-child {
+header address {
 	display: flex;
 	width: 100%;
 	max-width: 900px;
 }
 
-header span:last-child a {
+header address a {
 	color: var(--accent-primary-light);
 	padding: 0 2rem;
 	text-decoration: none;
@@ -151,7 +159,7 @@ header span:last-child a {
 	margin-bottom: 2rem;
 }
 
-header span:last-child a:hover {
+header address a:hover {
 	color: orange;
 }
 
@@ -164,8 +172,21 @@ header span:last-child a:hover {
 
 .card h2{
 	color: var(--accent-primary);
+	margin-bottom: 3rem;
 }
 
+/* 
+	This is basically a carbon copy of the divider class
+	But doing it this way means we don't have to change the HTML each time a new card is added
+*/
+.card:not(:last-child)::after {
+	display: block;
+	content: "";
+	background-color: var(--accent-primary-light);
+	height: 1px;
+	width: 33%;
+	margin: 3rem auto;
+}
 
 .card-container {
 
@@ -183,17 +204,13 @@ header span:last-child a:hover {
 	padding: 1rem;
 }
 
-/* 
-	This is basically a carbon copy of the divider class
-	But doing it this way means we don't have to change the HTML each time a new card is added
-*/
-.card:not(:last-child)::after {
-	display: block;
-	content: "";
-	background-color: var(--accent-primary-light);
-	height: 1px;
-	width: 33%;
-	margin: 3rem auto;
+.card:nth-of-type(even) .card-container {
+	grid-template-columns: 1fr 2fr;
+	grid-template-areas: "sub-content main-content";
+}
+
+.card:nth-of-type(even) .card-container .card-read-more{
+	text-align: right;
 }
 
 .card-main-content-container {
@@ -243,6 +260,7 @@ header span:last-child a:hover {
 	text-decoration: none;
 	color: grey;
 	text-decoration: line-through;
+	margin: 0 2rem;
 }
 
 /* SCROLLBAR ADJUSTMENT */
