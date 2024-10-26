@@ -204,14 +204,17 @@ header address a:hover {
 	padding: 1rem;
 }
 
-.card:nth-of-type(even) .card-container {
-	grid-template-columns: 1fr 2fr;
-	grid-template-areas: "sub-content main-content";
+@media only screen and (min-width: 750px) {
+	.card:nth-of-type(even) .card-container {
+		grid-template-columns: 1fr 2fr;
+		grid-template-areas: "sub-content main-content";
+	}
+	
+	.card:nth-of-type(even) .card-container .card-read-more{
+		text-align: right;
+	}
 }
 
-.card:nth-of-type(even) .card-container .card-read-more{
-	text-align: right;
-}
 
 .card-main-content-container {
 	grid-area: main-content;
@@ -320,6 +323,21 @@ footer
 		padding: 0.5rem 1rem;
 	}
 }
+
+@media screen and (max-width: 750px) {
+
+	.card-container {
+		grid-template-columns: 1fr;
+		grid-template-rows: 70vw 1fr;
+		grid-template-areas: 
+			"sub-content"
+			"main-content";
+	}
+	.card-sub-content-container {
+		 object-fit: contain;
+	}
+}
+
 @media screen and (max-width: 500px) {
 
 	h1 {
