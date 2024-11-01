@@ -90,6 +90,56 @@ No need for this as of now
 	content: "Unreal";
 }
 
+.lang-unity::before {
+	content: "Unity";
+}
+
+.lang-monogame::before {
+	content: "MonoGame";
+}
+
+.lang-blazor::before {
+	content: "Blazor";
+}
+
+.lang-docker::before {
+	content: "Docker";
+}
+
+.lang-githubactions::before {
+	content: "Github Actions";
+}
+
+.lang-heroku::before {
+	content: "Heroku";
+}
+
+.lang-mongodb::before {
+	content: "MongoDB";
+}
+
+.lang-xunit::before {
+	content: "XUnit";
+}
+
+.lang-signalr::before {
+	content: "SignalR";
+}
+
+.lang-dotnet::before {
+	content: ".NET";
+}
+
+.lang-mariadb::before {
+	content: "MariaDB";
+}
+
+.lang-dapper::before {
+	content: "Dapper";
+}
+
+
+
 /*
 	------------------------------
 				HEADER			
