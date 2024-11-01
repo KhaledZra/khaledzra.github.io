@@ -262,8 +262,11 @@ header address a:hover {
 .card-read-more a {
 	text-decoration: none;
 	color: grey;
-	text-decoration: line-through;
 	margin: 0 2rem;
+}
+
+.card-read-more a:hover {
+	color: orange;
 }
 
 /* SCROLLBAR ADJUSTMENT */
