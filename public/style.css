@@ -363,7 +363,7 @@ header .profile ul a {
 
 header .profile ul a:hover {
     transform: translateY(-4px) scale(1.03);
-    background-color: rgba(176, 139, 255, 0.08); /* subtle purple tint */
+    background-color: rgba(176,139,255,0.08); /* subtle purple tint */
     box-shadow: 0 8px 20px rgba(124, 77, 255, 0.10);
 }
 
@@ -441,7 +441,6 @@ header address a:hover {
 }
 
 .card-container {
-
 	/*
 		If we add cool cosmetics to the card, we can add them here
 		NOT in the card class as that handles the card to card spacing 
@@ -449,11 +448,14 @@ header address a:hover {
 
 	display: grid;
 	grid-template-columns: 2fr 1fr;
-	grid-template-rows: var(--card-height);
+	/* allow rows to expand based on content so long paragraphs don't push buttons out of view */
+	grid-auto-rows: minmax(120px, auto);
 	grid-template-areas: "main-content sub-content";
 	max-width: 900px;
 	margin: 0 auto;
 	padding: 1rem;
+	column-gap: 2rem; /* horizontal spacing between image (sub-content) and text (main-content) */
+	align-items: start; /* align items to the top so long text doesn't push buttons out of view */
 }
 
 @media only screen and (min-width: 750px) {
@@ -472,69 +474,85 @@ header address a:hover {
 	grid-area: main-content;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-	height: 100%;
-	overflow: hidden;
+	/* allow content to size naturally */
+	height: auto;
+	overflow: visible;
+	padding-left: 1rem; /* breathing room between image and text */
+	padding-bottom: 1.5rem; /* give space for read-more so it's not cramped */
+	position: relative !important; /* ensure stacking context */
+	z-index: 3 !important; /* keep text and links above screenshots */
+}
+
+/* Keep main content overflow visible so the read-more area isn't clipped when paragraph is long */
+.card-main-content-container {
+    overflow: visible !important;
 }
 
 .card-sub-content-container {
     grid-area: sub-content;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* keep the screenshot up top and badges anchored below */
+    justify-content: space-between;
     align-items: center;
-    height: 100%;
-    overflow: hidden;
+    height: auto; /* let the content determine height */
+    overflow: visible; /* allow badges to remain visible instead of being clipped */
+    padding-right: 0.5rem;
+    position: relative;
+    z-index: 1; /* sit under the main content so links remain clickable */
 }
 
 .card-sub-content-container img {
     height: auto;
-    max-height: 80%;
+    /* slightly reduce the image max-height so there is guaranteed room for badges below */
+    max-height: 60%;
+    max-width: 100%;
     object-fit: contain;
     border-radius: 8px; /* subtle rounded corners for screenshots */
+    pointer-events: none; /* don't capture clicks; keep links clickable */
 }
 
 .card-sub-content-container ul {
-    display: flex;
-    flex-direction: row;
+    /* Grid layout so badges are always visible. Shows up to 3 columns on desktop, then 2/1 on smaller screens */
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center; /* center the grid within the card area */
     align-items: center;
-    justify-content: flex-start;
     list-style: none;
-    flex-grow: 1;
-    max-height: 20%;
-	max-width: calc(var(--card-height) * 0.8); /* My genius knows no limit. Set to same width as img*/
-	overflow-y: hidden; 
-	overflow-x: auto;
-    gap: 0.5rem; /* consistent spacing between badges */
+    gap: 0.6rem; /* spacing between badges */
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    align-self: center; /* ensure the list stays centered horizontally */
 }
 
-.card-sub-content-container ul li{
+/* Add padding to the text column so text doesn't touch the image */
+.card-main-content-container {
+    grid-area: main-content;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: auto; /* allow main content to expand with text */
+    overflow: visible; /* ensure read-more stays visible */
+    padding-left: 1rem; /* breathing room between image and text */
+}
+
+/* Add slight right padding to image container to keep visual gap consistent */
+.card-sub-content-container {
+    grid-area: sub-content;
     display: flex;
-	white-space: nowrap;
-    flex-grow: 1;
-}
-
-.card-sub-content-container ul li.lang {
-    flex-grow: 0; /* don't stretch badges */
-    margin-right: 0.5rem;
+    flex-direction: column;
+    /* keep the screenshot up top and badges anchored below */
+    justify-content: space-between;
     align-items: center;
+    height: auto; /* let the content determine height */
+    overflow: visible; /* allow badges to remain visible instead of being clipped */
+    padding-right: 0.5rem;
 }
 
-.card-read-more a {
-	text-decoration: none;
-	margin: 0 2rem;
-	display: inline-block;
-	padding: 0.35rem 0.65rem;
-	border-radius: 8px;
-	border: 1px solid rgba(124,77,255,0.18);
-	color: var(--accent-primary-light);
-	margin-right: 0.5rem;
-	transition: background-color 160ms ease, transform 160ms ease;
-}
-
-.card-read-more a:hover {
-	color: var(--accent-primary-light);
-	background-color: rgba(124,77,255,0.06);
-	transform: translateY(-2px);
+/* Increase column gap a bit more for extra spacing */
+.card-container {
+    /* ...existing code... */
+    column-gap: 2rem; /* horizontal spacing between image (sub-content) and text (main-content) */
+    align-items: start; /* align items to the top so long text doesn't push buttons out of view */
 }
 
 /* SCROLLBAR ADJUSTMENT */
@@ -630,6 +648,7 @@ footer p {
 	.card-sub-content-container {
 		order: 1;
 		width: 100%;
+		margin-bottom: 1rem; /* ensure space between stacked image and text on narrow screens */
 	}
 
 	.card-sub-content-container ul {
@@ -648,12 +667,153 @@ article.card{
 	padding: 0.75rem;
 	margin: 1.25rem 0;
 	transition: transform 220ms ease, box-shadow 220ms ease;
+	overflow: visible; /* allow children (badges/links) to be visible and clickable */
 }
 article.card:hover{
 	transform: translateY(-6px);
 	box-shadow: 0 18px 36px rgba(28,8,48,0.45);
 }
 
-.card-main-content-container p {
-	color: rgba(255,255,255,0.92);
+/* Ensure the read-more link area is on top and fully interactive */
+.card-read-more {
+    /* Keep read-more in normal flow so it appears after the paragraph content */
+    position: static !important;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 1rem; /* spacing from the paragraph */
+    z-index: 9999 !important; /* ensure clickable above screenshots */
+}
+
+/* On small screens where the layout stacks, keep read-more in normal flow */
+@media screen and (max-width: 750px) {
+    .card-read-more {
+        position: static !important;
+        margin-top: 0.5rem !important;
+    }
+}
+
+.card-read-more a {
+    position: relative;
+    z-index: 21;
+    pointer-events: auto; /* ensure clickable */
+    display: inline-block;
+    text-decoration: none;
+    margin: 0 0.35rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 10px;
+    border: 1px solid rgba(124,77,255,0.18);
+    color: var(--accent-primary-light);
+    background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005));
+    font-weight: 600;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease, color 160ms ease;
+    box-shadow: none;
+}
+
+/* Robust button class used by card-read-more anchors */
+.btn {
+    display: inline-block !important;
+    padding: 0.45rem 0.85rem !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(124,77,255,0.18) !important;
+    background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005)) !important;
+    color: var(--accent-primary-light) !important;
+    -webkit-text-fill-color: var(--accent-primary-light) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease, color 160ms ease !important;
+}
+.btn:hover, .btn:focus {
+    color: var(--accent-primary) !important;
+    -webkit-text-fill-color: var(--accent-primary) !important;
+    background-color: rgba(176,139,255,0.08) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 22px rgba(124,77,255,0.08) !important;
+}
+.btn:active { transform: translateY(-1px) scale(0.995) !important; }
+.btn:focus-visible { outline: 3px solid rgba(176,139,255,0.16) !important; outline-offset: 3px !important; }
+
+/* High-specificity final override to ensure card buttons display correctly */
+html body article.card .card-read-more a,
+html body article.card .card-read-more a:link,
+html body article.card .card-read-more a:visited {
+    color: var(--accent-primary-light) !important;
+    background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005)) !important;
+    border: 1px solid rgba(124,77,255,0.18) !important;
+    text-decoration: none !important;
+}
+
+html body article.card .card-read-more a:hover,
+html body article.card .card-read-more a:focus {
+    color: var(--accent-primary) !important;
+    background-color: rgba(176,139,255,0.08) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 22px rgba(124,77,255,0.08) !important;
+}
+
+/* Final emergency override: ensure card read-more links look like buttons, not default blue links */
+html body article.card .card-read-more a,
+html body article.card .card-read-more a:link,
+html body article.card .card-read-more a:visited,
+html body article.card .card-read-more a * {
+    color: var(--accent-primary-light) !important;
+    -webkit-text-fill-color: var(--accent-primary-light) !important; /* iOS/Safari */
+    background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005)) !important;
+    border: 1px solid rgba(124,77,255,0.18) !important;
+    text-decoration: none !important;
+    padding: 0.45rem 0.85rem !important;
+    border-radius: 10px !important;
+    display: inline-block !important;
+}
+html body article.card .card-read-more a:hover,
+html body article.card .card-read-more a:focus {
+    color: var(--accent-primary) !important;
+    -webkit-text-fill-color: var(--accent-primary) !important;
+    background-color: rgba(176,139,255,0.08) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 22px rgba(124,77,255,0.08) !important;
+}
+
+/* Strong override: ensure read-more links are always above screenshots and clickable */
+article.card .card-main-content-container,
+article.card .card-main-content-container a,
+article.card .card-read-more,
+article.card .card-read-more a {
+    /* keep clickable and on top, but don't force positioning (preserve absolute placement) */
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+}
+
+/* Guarantee read-more links are always on top and clickable */
+.card-read-more,
+.card-read-more a {
+    z-index: 2147483646 !important; /* near the top */
+    pointer-events: auto !important;
+}
+
+/* Final safety: ensure any link inside a card is clickable above screenshots */
+article.card a, article.card a * {
+    position: relative !important;
+    z-index: 2147483647 !important;
+    pointer-events: auto !important;
+}
+
+/* Keep screenshots non-interactive */
+.card-sub-content-container img { pointer-events: none !important; }
+
+/* Ensure badge list and items are still interactive */
+.card-sub-content-container ul, .card-sub-content-container li, .card-sub-content-container li .lang { pointer-events: auto !important; }
+
+/* Allow badges inside sub-content to remain interactive, but prevent the screenshot itself from blocking clicks */
+.card-sub-content-container > img { pointer-events: none !important; }
+.card-sub-content-container ul, .card-sub-content-container li { pointer-events: auto !important; }
+
+/* Safety: if any pseudo-elements or ::before overlays exist on sub-content, disable their pointer events */
+.card-sub-content-container::before, .card-sub-content-container::after, .card-sub-content-container *::before, .card-sub-content-container *::after {
+    pointer-events: none !important;
+}
+
+/* Ensure screenshots never capture pointer events */
+.card-sub-content-container img {
+    pointer-events: none !important;
 }
