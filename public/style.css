@@ -287,8 +287,10 @@ header p {
 
 header {
 
-	background-image: linear-gradient(rgba(124, 77, 255, 0.28), rgb(15, 8, 22)), url("resources/hero_image_generated.webp");
+	background-image: linear-gradient(rgba(124, 77, 255, 0.28), rgb(15, 8, 22));
 	background-size: cover;
+	position: relative; /* establish a stacking context so the header-bg video can be absolute */
+	overflow: hidden; /* hide extended video edges */
 
 	display: flex;
 	flex-direction: column;
@@ -329,6 +331,41 @@ header .profile > img {
     aspect-ratio: 1 / 1;
     border: 4px solid var(--accent-primary);
     box-shadow: 0 6px 18px rgba(112, 77, 255, 0.12);
+}
+
+/* Video avatar: same visual treatment as the static image */
+header .profile .profile-video {
+    width: auto;
+    height: auto;
+    max-width: 256px;
+    min-width: 128px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    border: 4px solid var(--accent-primary);
+    box-shadow: 0 6px 18px rgba(112, 77, 255, 0.12);
+    background-color: transparent;
+}
+
+/* Fallback image shown when video is not supported or when reduced-motion is preferred */
+.profile-fallback {
+    display: none; /* normally hidden; shown only when needed */
+    width: 100%;
+    max-width: 256px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--accent-primary);
+    box-shadow: 0 6px 18px rgba(112, 77, 255, 0.12);
+    margin: 0 auto;
+}
+
+/* Respect users who prefer reduced motion: show static image instead */
+@media (prefers-reduced-motion: reduce) {
+    header .profile .profile-video { display: none !important; }
+    header .profile .profile-fallback { display: block !important; }
 }
 
 header .profile ul {
@@ -655,6 +692,13 @@ footer p {
 		justify-content: center;
 	}
 
+	.header-bg {
+		top: 0 !important;
+		height: 100% !important;
+		object-position: center center !important;
+		transform: none !important;
+		filter: blur(4px) brightness(0.7) !important;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -816,4 +860,63 @@ article.card a, article.card a * {
 /* Ensure screenshots never capture pointer events */
 .card-sub-content-container img {
     pointer-events: none !important;
+}
+
+/* Header background video: full-bleed, behind header content */
+.header-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* enlarge a bit more to guarantee the blurry area reaches edges */
+    min-width: 110%;
+    min-height: 110%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    /* center the visual area and slightly bias upwards so top + bottom show */
+    transform: translate(-50%, -50%) scale(1.12);
+    object-position: center 40%; /* show slightly more top while keeping bottom visible */
+    /* strong enough blur + dim to keep text readable */
+    filter: blur(6px) brightness(0.62);
+    z-index: 0;
+    pointer-events: none; /* allow clicks through to content */
+    opacity: 0.95; /* subtle fade so content remains readable */
+}
+
+/* On narrow screens, simplify to avoid heavy transforms */
+@media screen and (max-width: 750px) {
+    .header-bg {
+        top: 0 !important;
+        left: 0 !important;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        width: 100% !important;
+        height: 100% !important;
+        transform: none !important;
+        object-position: center center !important;
+        filter: blur(4px) brightness(0.7) !important;
+    }
+}
+
+/* Subtle overlay between the video and content to improve contrast */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* sits above the video but below header content */
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(15,8,22,0.18) 0%, rgba(15,8,22,0.45) 60%, rgba(15,8,22,0.55) 100%);
+}
+
+/* Ensure everything except the background video sits above it */
+header > :not(.header-bg) {
+    position: relative;
+    z-index: 2;
+}
+
+/* If user prefers reduced motion (or video can't play), hide the bg video and fall back to the poster image */
+@media (prefers-reduced-motion: reduce) {
+    .header-bg { display: none !important; }
+    header { background-image: linear-gradient(rgba(124, 77, 255, 0.28), rgb(15, 8, 22)), url("resources/hero_image_generated.webp"); }
+    header::before { display: none !important; }
 }
