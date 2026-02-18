@@ -5,46 +5,54 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="Khaled is an aspiring game developer from Sweden with a great passion for the craft." />
 	<title>Khaled Zraiqi | Developer</title>
+	<!-- Load Inter from Google Fonts for a modern, readable UI -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css" />
 	<script src="main.js" defer></script>
 </head>
 <body>
+	<!-- Skip link for keyboard users -->
+	<a class="skip-link" href="#main">Skip to content</a>
 	<header>
-		<span>
+		<!-- Background video replaces the old keyboard background image -->
+		<video class="header-bg" autoplay muted loop playsinline poster="resources/hero_image_generated.webp" aria-hidden="true">
+			<source src="resources/Project_Espionage_SmartLoop.mp4" type="video/mp4">
+			<!-- If video can't play, the poster will show as background -->
+		</video>
+		<div class="profile">
 			<img src="resources/khaled_image.jpg" alt="Khaled Zraiqi profile picture">
 			<ul>
 				<li>
-					<a href="https://github.com/KhaledZra" target="_blank" rel="noopener noreferrer">
-						<img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="GitHub">
+					<a href="https://github.com/KhaledZra" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+						<img src="resources/github.svg" alt="">
 					</a>
 				</li>
 				<li>
-					<a href="https://www.linkedin.com/in/khaled-zraiqi/" target="_blank" rel="noopener noreferrer">
-						<img src="https://camo.githubusercontent.com/808ceb70f288e0f672583eefd0a54500768c3d4de438eb4b1857bcde0f5d471d/68747470733a2f2f7777772e7376677265706f2e636f6d2f73686f772f3435323035312f6c696e6b6564696e2e737667" alt="LinkedIn">
+					<a href="https://www.linkedin.com/in/khaled-zraiqi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+						<img src="resources/linkedin.svg" alt="">
 					</a>
 				</li>
 				<li>
-					<a href="https://khaledzraiqi.itch.io/" target="_blank" rel="noopener noreferrer">
-						<img src="https://camo.githubusercontent.com/0288f964edccc60eb8c7b273e279576505be925a89bd1ce8a4cdb7d7201db205/68747470733a2f2f7777772e7376677265706f2e636f6d2f73686f772f3435323233322f697463682d696f2e737667" alt="ItchIo">
+					<a href="https://khaledzraiqi.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Itch.io">
+						<img src="resources/itch.svg" alt="">
 					</a>
 				</li>
 				<li>
-					<a href="resources/khaled_zraiqi_cv.pdf" target="_blank" rel="noopener noreferrer">
-						<img src="https://www.svgrepo.com/show/112988/cv-file-interface-symbol.svg" alt="CV">
+					<a href="resources/khaled_zraiqi_cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download CV">
+						<img src="resources/cv.svg" alt="">
 					</a>
 				</li>
 			</ul>
-		</span>
-		<span>
+		</div>
+		<div class="title">
 			<h1>Khaled Zraiqi</h1>
 			<h2>Versitile game / backend developer</h2>
-		</span>
+		</div>
 		<p>
-			My name's Khaled, and I am a 27-year-old aspiring game developer from Sweden.
+			My name's Khaled, and I am a 28-year-old aspiring game developer from Sweden.
+			I'm currently studying in Malmö at FutureGames as gameplay programmer.
 			I have a higher vocational education in web development as a full-stack developer.
-			I also have a big love for game development and have been working on projects in my spare time.
-			I currently spend most of my spare time programming and trying to perfect my craft — something I'd like to say I'm slowly achieving.
-			I dabble in most languages, so I am very versatile and ready to do some on-the-fly learning!
+			My big love for games and game development started my career path and has been the main driving force for me to learn and create games.
 			My biggest strength is my ability to learn and adapt to new situations and challenges.
 			Please check out my projects below and feel free to contact me if you have any questions or want to work with me!
 		</p>
@@ -52,19 +60,19 @@
 			<a href="mailto:khaledzraiqi@gmail.com">khaledzraiqi@gmail.com</a>
 		</address>
 	</header>
-	<main>
+	<main id="main">
 		<section>
 			<!--	Project Espionage Card	-->
 			<article class="card">
 				<section class="card-container">
-					<span class="card-sub-content-container">
+					<div class="card-sub-content-container">
 						<img src="resources/project_espionage_ss.png" alt="Gameplay Screenshot" />
 						<ul class="scroll-horizontal">
 							<li class ="lang lang-cpp"></li>
 							<li class ="lang lang-unreal"></li>
 						</ul>
-					</span>
-					<span class="card-main-content-container">
+					</div>
+					<div class="card-main-content-container">
 						<h2>Project Espionage</h2>
 						<p>
 							Project Espionage is a 3D action espionage game made in Unreal Engine 5. It's a game where you play as agent Andersson,
@@ -72,26 +80,26 @@
 							and only the demo is available to play on itch.io using the clickable link below.
 							The game is inspired by the Hitman series and Metal Gear Solid.
 						</p>
-						<span class="card-read-more">
-							<a href="https://khaledzraiqi.itch.io/project-espionage" target="_blank" rel="noopener noreferrer">Itch.Io</a>
-							<a href="https://dev.azure.com/halo434000/_git/UE5SpyGame" target="_blank" rel="noopener noreferrer">Source Code</a>
-							<a href="https://dev.azure.com/halo434000/UE5SpyGame/_wiki/wikis/UE5SpyGame.wiki/1/Project-Documentation" target="_blank" rel="noopener noreferrer">Documentation</a>
-						</span>
-					</span>
+						<div class="card-read-more">
+							<a class="btn" href="https://khaledzraiqi.itch.io/project-espionage" target="_blank" rel="noopener noreferrer">Itch.Io</a>
+							<a class="btn" href="https://dev.azure.com/halo434000/_git/UE5SpyGame" target="_blank" rel="noopener noreferrer">Source Code</a>
+							<a class="btn" href="https://dev.azure.com/halo434000/UE5SpyGame/_wiki/wikis/UE5SpyGame.wiki/1/Project-Documentation" target="_blank" rel="noopener noreferrer">Documentation</a>
+						</div>
+					</div>
 				</section>
 			</article>
 			
 			<!--	SpriteBuster Card	-->
 			<article class="card">
 				<section class="card-container">
-					<span class="card-sub-content-container">
+					<div class="card-sub-content-container">
 						<img src="resources/spritebuster_ss.png" alt="Gameplay Screenshot" />
 						<ul class="scroll-horizontal">
 							<li class ="lang lang-csharp"></li>
 							<li class ="lang lang-unity"></li>
 						</ul>
-					</span>
-					<span class="card-main-content-container">
+					</div>
+					<div class="card-main-content-container">
 						<h2>SpriteBuster</h2>
 						<p>
 							Unity 2D roguelike game with inspiration from Vampire Survivors.
@@ -99,18 +107,18 @@
 							You can pick up different weapons and power-ups to help you on your journey.
 							Then, once you are strong enough, you can face the boss and claim victory!
 						</p>
-						<span class="card-read-more">
-							<a href="https://khaledzraiqi.itch.io/spritebuster" target="_blank" rel="noopener noreferrer">Download</a>
-							<a href="https://github.com/KhaledZra/SpriteBusterUnityGame" target="_blank" rel="noopener noreferrer">Github</a>
-						</span>
-					</span>
+						<div class="card-read-more">
+							<a class="btn" href="https://khaledzraiqi.itch.io/spritebuster" target="_blank" rel="noopener noreferrer">Download</a>
+							<a class="btn" href="https://github.com/KhaledZra/SpriteBusterUnityGame" target="_blank" rel="noopener noreferrer">Github</a>
+						</div>
+					</div>
 				</section>
 			</article>
 
 			<!--	Project B Card	-->
 			<article class="card">
 				<section class="card-container">
-					<span class="card-sub-content-container">
+					<div class="card-sub-content-container">
 						<img src="resources/project_b_ss.png" alt="Gameplay Screenshot" />
 						<ul class="scroll-horizontal">
 							<li class ="lang lang-csharp"></li>
@@ -123,8 +131,8 @@
 							<li class ="lang lang-githubactions"></li>
 							<li class ="lang lang-docker"></li>
 						</ul>
-					</span>
-					<span class="card-main-content-container">
+					</div>
+					<div class="card-main-content-container">
 						<h2>Project B</h2>
 						<p>
 							Project B is my thesis project, where I developed a multiplayer game using Monogame and SignalR.
@@ -135,50 +143,50 @@
 							I used Docker for deployment and GitHub Actions for CI/CD.
 							Although the server is currently down, you can still download the client and play it offline locally without issues.
 						</p>
-						<span class="card-read-more">
-							<a href="https://github.com/KhaledZra/Project_B_Client/releases/tag/V1.0" target="_blank" rel="noopener noreferrer">Download</a>
-							<a href="https://github.com/KhaledZra/Project_B_Client" target="_blank" rel="noopener noreferrer">Client Github</a>
-							<a href="https://github.com/KhaledZra/Project_B_Server" target="_blank" rel="noopener noreferrer">Server Github</a>
-						</span>
-					</span>
+						<div class="card-read-more">
+							<a class="btn" href="https://github.com/KhaledZra/Project_B_Client/releases/tag/V1.0" target="_blank" rel="noopener noreferrer">Download</a>
+							<a class="btn" href="https://github.com/KhaledZra/Project_B_Client" target="_blank" rel="noopener noreferrer">Client Github</a>
+							<a class="btn" href="https://github.com/KhaledZra/Project_B_Server" target="_blank" rel="noopener noreferrer">Server Github</a>
+						</div>
+					</div>
 				</section>
 			</article>
 
 			<!--	Castle Shalodie Card	-->
 			<article class="card">
 				<section class="card-container">
-					<span class="card-sub-content-container">
+					<div class="card-sub-content-container">
 						<img src="resources/castleshalodie_ss.png" alt="Gameplay Screenshot" />
 						<ul class="scroll-horizontal">
 							<li class ="lang lang-csharp"></li>
 							<li class ="lang lang-unity"></li>
 						</ul>
-					</span>
-					<span class="card-main-content-container">
+					</div>
+					<div class="card-main-content-container">
 						<h2>CastleShalodie</h2>
 						<p>
 							CastleShalodie is an FPS adventure game made in Unity.
 							Run around this spooky and mysterious castle to collect all the hidden gems.
 							It's available to play on itch.io using the clickable link below.
 						</p>
-						<span class="card-read-more">
-							<a href="https://khaledzraiqi.itch.io/castleshalodie" target="_blank" rel="noopener noreferrer">Itch.Io</a>
-						</span>
-					</span>
+						<div class="card-read-more">
+							<a class="btn" href="https://khaledzraiqi.itch.io/castleshalodie" target="_blank" rel="noopener noreferrer">Itch.Io</a>
+						</div>
+					</div>
 				</section>
 			</article>
 
 			<!--	Rollaball Card	-->
 			<article class="card">
 				<section class="card-container">
-					<span class="card-sub-content-container">
+					<div class="card-sub-content-container">
 						<img src="resources/rollaball_ss.png" alt="Gameplay Screenshot" />
 						<ul class="scroll-horizontal">
 							<li class ="lang lang-cpp"></li>
 							<li class ="lang lang-unreal"></li>
 						</ul>
-					</span>
-					<span class="card-main-content-container">
+					</div>
+					<div class="card-main-content-container">
 						<h2>RollaBall</h2>
 						<p>
 							RollaBall is a simple game made in Unreal Engine 5.
@@ -186,24 +194,24 @@
 							You control a physically heavy ball and move around the level to collect the cubes.
 							You can play the game on itch.io using the clickable link below.
 						</p>
-						<span class="card-read-more">
-							<a href="https://khaledzraiqi.itch.io/rollaball" target="_blank" rel="noopener noreferrer">Itch.Io</a>
-						</span>
-					</span>
+						<div class="card-read-more">
+							<a class="btn" href="https://khaledzraiqi.itch.io/rollaball" target="_blank" rel="noopener noreferrer">Itch.Io</a>
+						</div>
+					</div>
 				</section>
 			</article>
 			
 			<!--	Snake Card	-->
 			<article class="card">
 				<section class="card-container">
-					<span class="card-sub-content-container">
+					<div class="card-sub-content-container">
 						<img src="resources/openglsnake_ss.png" alt="Gameplay Screenshot" />
 						<ul class="scroll-horizontal">
 							<li class ="lang lang-cpp"></li>
 							<li class ="lang lang-opengl"></li>
 						</ul>
-					</span>
-					<span class="card-main-content-container">
+					</div>
+					<div class="card-main-content-container">
 						<h2>OpenGL Snake</h2>
 						<p>
 							A very simple snake game made in C++ using OpenGL.
@@ -212,17 +220,17 @@
 							This project helped me appreciate the tools provided by modern game engines and helped fundamentally understand how games are made.
 							To play the game, you are required to locally compile the project using Visual Studio or any other C++ compiler.
 						</p>
-						<span class="card-read-more">
-							<a href="https://github.com/KhaledZra/OpenGlSnake" target="_blank" rel="noopener noreferrer">Github</a>
-						</span>
-					</span>
+						<div class="card-read-more">
+							<a class="btn" href="https://github.com/KhaledZra/OpenGlSnake" target="_blank" rel="noopener noreferrer">Github</a>
+						</div>
+					</div>
 				</section>
 			</article>
 
 			<!--	Project X	-->
 			<article class="card">
 				<section class="card-container">
-					<span class="card-sub-content-container">
+					<div class="card-sub-content-container">
 						<img src="resources/project_x_ss.png" alt="Gameplay Screenshot" />
 						<ul class="scroll-horizontal">
 							<li class ="lang lang-csharp"></li>
@@ -231,8 +239,8 @@
 							<li class ="lang lang-docker"></li>
 							<li class ="lang lang-dapper"></li>
 						</ul>
-					</span>
-					<span class="card-main-content-container">
+					</div>
+					<div class="card-main-content-container">
 						<h2>Project X</h2>
 						<p>
 							A group project where we created a cmd/terminal RPG game in C# using.Net, MariaDB, and Dapper.
@@ -243,11 +251,11 @@
 							I later refactored the game to use Docker with Evolve to start the MariaDB server.
 							NOTE: If you wish to play the game, you require Docker to run the MariaDB server.
 						</p>
-						<span class="card-read-more">
-							<a href="https://github.com/KhaledZra/ProjectX/releases/tag/v1.0" target="_blank" rel="noopener noreferrer">Download</a>
-							<a href="https://github.com/KhaledZra/ProjectX" target="_blank" rel="noopener noreferrer">Github</a>
-						</span>
-					</span>
+						<div class="card-read-more">
+							<a class="btn" href="https://github.com/KhaledZra/ProjectX/releases/tag/v1.0" target="_blank" rel="noopener noreferrer">Download</a>
+							<a class="btn" href="https://github.com/KhaledZra/ProjectX" target="_blank" rel="noopener noreferrer">Github</a>
+						</div>
+					</div>
 				</section>
 			</article>
 
@@ -255,10 +263,10 @@
 		<!--<div class="divider-line"></div>-->
 	</main>
 	<footer>
-		<span>
-			<a href="https://www.linkedin.com/in/timmyohman/" target="_blank" rel="noopener noreferrer"><p>© 2024 Timmy "VonRiddarn" Öhman</p></a>
+		<div>
+			<p><a href="https://www.linkedin.com/in/timmyohman/" target="_blank" rel="noopener noreferrer">© 2024 Timmy "VonRiddarn" Öhman</a></p>
 			<p>All rights reserved.</p>
-		</span>
+		</div>
 	</footer>
 </body>
 </html>

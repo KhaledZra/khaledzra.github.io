@@ -1,44 +1,93 @@
 :root {
 
-	--background-primary: #1c1f24;
-	--background-secondary: #272b31;
-	--background-tertiary: #464d57;
+	--background-primary: #0f0816; /* deep, near-black purple */
+	--background-secondary: #1a0f2a; /* darker purple */
+	--background-tertiary: #2a1b45; /* muted indigo */
 
-	--accent-primary: #00aad4;
-	--accent-primary-light: #29d4ff;
+	--accent-primary: #7c4dff; /* rich purple */
+	--accent-primary-light: #b08bff; /* lighter purple for highlights */
+	--accent-dark: #5a2bd6; /* darker purple for titles */
 	--accent-tertiary: #272b31;
 
 	--card-height: 300px;
 }
 
-* {
-	margin: 0;
-	padding: 0;
-	/*outline: dashed 1px red;*/
+/* Base font / typography - using Inter for a modern, clean look */
+html, body {
+	font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	font-weight: 400;
+	line-height: 1.45;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-/*
-	----------------------------
-				BASE			
-	----------------------------
-*/
-
 h1 {
-	font-size: 4em;
-	color: var(--accent-primary-light);
+	/* responsive heading size */
+	font-size: clamp(2rem, 6vw, 4em);
+	color: var(--accent-dark);
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	margin: 0.2em 0 0.25em 0;
 }
 
 h2 {
 	font-size: 1.5em;
+	font-weight: 600;
+	margin: 0;
 }
 
 img {
-	border-radius: 2%;
+	/* Reset global image rounding so we control rounding per-context */
+	border-radius: 0;
+	display: inline-block;
+	vertical-align: middle;
 }
 
 body {
 	background-color: var(--background-primary);
 	color: white;
+}
+
+/* Skip link: hidden off-screen until focused */
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+.skip-link:focus {
+	left: 1rem;
+	top: 1rem;
+	width: auto;
+	height: auto;
+	background: rgba(124,77,255,0.12);
+	color: white;
+	padding: 0.5rem 0.75rem;
+	border-radius: 6px;
+	text-decoration: none;
+	z-index: 9999;
+}
+
+/* Header improvements */
+header .title h1 {
+	/* extra pop against textured background */
+	text-shadow: 0 6px 28px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.02);
+}
+
+header .title h2 {
+	color: var(--accent-primary-light);
+	font-weight: 500;
+	opacity: 0.95;
+	margin-top: 0.25rem;
+}
+
+header p {
+	color: rgba(255,255,255,0.92);
+	font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+	line-height: 1.6;
+	max-width: 820px; /* slightly narrower for easier reading */
 }
 
 /*
@@ -54,91 +103,181 @@ body {
 	margin: 3rem auto;
 }
 
+/* LANGUAGE BADGES (pills with small color icon) */
 .lang {
-	background-color: var(--background-secondary);
-	display: inline-block;
-	padding: 0.4rem 1rem;
-	border-radius: 25%;
-	color: var(--background-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: var(--background-secondary);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
-
-/*
-No need for this as of now
-.lang:hover {
-	background-color: var(--background-tertiary);
-}*/
 
 .lang::before {
-	color: white;
+    /* small colored square serving as an icon */
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    flex: 0 0 28px;
+    box-shadow: inset 0 -2px 6px rgba(0,0,0,0.25);
 }
 
-/* LANGUAGE CLASSES */
+/* Labels (moved from ::before to ::after for visual structure) */
+.lang::after {
+    content: attr(data-label); /* fallback if a data-label attribute is present */
+}
+
+/* Per-technology labels and icon colors (each sets content and icon color) */
+.lang-csharp::after { content: "C#"; }
+.lang-cpp::after { content: "C++"; }
+.lang-opengl::after { content: "OpenGL"; }
+.lang-unreal::after { content: "Unreal"; }
+.lang-unity::after { content: "Unity"; }
+.lang-monogame::after { content: "MonoGame"; }
+.lang-blazor::after { content: "Blazor"; }
+.lang-docker::after { content: "Docker"; }
+.lang-githubactions::after { content: "Github Actions"; }
+.lang-heroku::after { content: "Heroku"; }
+.lang-mongodb::after { content: "MongoDB"; }
+.lang-xunit::after { content: "XUnit"; }
+.lang-signalr::after { content: "SignalR"; }
+.lang-dotnet::after { content: ".NET"; }
+.lang-mariadb::after { content: "MariaDB"; }
+.lang-dapper::after { content: "Dapper"; }
+
+/* Icon colors / images per technology (use provided svgrepo SVGs when available) */
+.lang-cpp::before {
+    background-image: url("resources/cpp.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 .lang-csharp::before {
-	content: "C#";
-}
-
-.lang-cpp::before {
-	content: "C++";
-}
-
-.lang-opengl::before {
-	content: "OpenGL";
-}
-
-.lang-unreal::before {
-	content: "Unreal";
-}
-
-.lang-unity::before {
-	content: "Unity";
-}
-
-.lang-monogame::before {
-	content: "MonoGame";
-}
-
-.lang-blazor::before {
-	content: "Blazor";
-}
-
-.lang-docker::before {
-	content: "Docker";
-}
-
-.lang-githubactions::before {
-	content: "Github Actions";
-}
-
-.lang-heroku::before {
-	content: "Heroku";
-}
-
-.lang-mongodb::before {
-	content: "MongoDB";
-}
-
-.lang-xunit::before {
-	content: "XUnit";
-}
-
-.lang-signalr::before {
-	content: "SignalR";
+    background-image: url("resources/csharp.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .lang-dotnet::before {
-	content: ".NET";
+    background-image: url("resources/dotnet.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-unreal::before {
+    background-image: url("resources/unreal.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-unity::before {
+    background-image: url("resources/unity.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-opengl::before {
+    background-image: url("resources/opengl.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .lang-mariadb::before {
-	content: "MariaDB";
+    background-image: url("resources/mariadb.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+.lang-docker::before {
+    background-image: url("resources/docker.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-githubactions::before {
+    background-image: url("resources/github.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-heroku::before {
+    background-image: url("resources/heroku.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-mongodb::before {
+    background-image: url("resources/mongodb.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-blazor::before {
+    background-image: url("resources/blazor.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-xunit::before {
+    background-image: url("resources/xunit.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-monogame::before {
+    background-image: url("resources/monogame.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lang-signalr::before {
+    background-image: url("resources/signalr.svg");
+    background-size: 60% 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Increase icon glyph size (only the SVG inside the square) so badges read better */
+.lang::before {
+    background-size: 78% 78% !important;
+}
+
+/* Dapper: show a centered D as requested */
 .lang-dapper::before {
-	content: "Dapper";
+    background-color: #c0392b;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 14px;
+    content: "D"; /* render the letter inside the square */
 }
 
-
+/* Small responsiveness */
+@media screen and (max-width: 600px) {
+    .lang { padding: 0.2rem 0.5rem; font-size: 0.85rem; }
+    .lang::before { width: 22px; height: 22px; flex: 0 0 22px; background-size: 64% 64% !important; }
+}
 
 /*
 	------------------------------
@@ -148,8 +287,10 @@ No need for this as of now
 
 header {
 
-	background-image: linear-gradient(rgba(41, 212, 255, 0.33), rgb(28, 31, 36)), url("resources/hero_image_generated.webp");
+	background-image: linear-gradient(rgba(124, 77, 255, 0.28), rgb(15, 8, 22));
 	background-size: cover;
+	position: relative; /* establish a stacking context so the header-bg video can be absolute */
+	overflow: hidden; /* hide extended video edges */
 
 	display: flex;
 	flex-direction: column;
@@ -165,34 +306,131 @@ header p {
 	max-width: 900px;
 }
 
-header span:first-child {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	gap: 1rem;
-}
-
-header span img {
-	grid-column-start: 2;
+header .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+	/* make profile block use the same max-width as other containers so centering is consistent */
 	width: 100%;
-	height: 100%;
-	max-width: 256px;
-	min-width: 128px;
-	object-fit: cover;
+	max-width: 900px;
 }
 
-header span ul {
-	display: flex;
-	align-items: flex-start;
-	justify-content: center;
-	list-style: none;
+header .profile > img {
+    /* stacked and centered above the icons */
+    width: auto;
+    height: auto;
+    max-width: 256px;
+    min-width: 128px;
+    object-fit: cover;
+    display: block; /* ensure margin:auto centers the element */
+    margin: 0 auto;
+    /* Make profile image circular with purple outline */
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    border: 4px solid var(--accent-primary);
+    box-shadow: 0 6px 18px rgba(112, 77, 255, 0.12);
 }
 
-header span ul 	img {
-	max-width: 64px;
-	min-width: 32px;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+/* Video avatar: same visual treatment as the static image */
+header .profile .profile-video {
+    width: auto;
+    height: auto;
+    max-width: 256px;
+    min-width: 128px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    border: 4px solid var(--accent-primary);
+    box-shadow: 0 6px 18px rgba(112, 77, 255, 0.12);
+    background-color: transparent;
+}
+
+/* Fallback image shown when video is not supported or when reduced-motion is preferred */
+.profile-fallback {
+    display: none; /* normally hidden; shown only when needed */
+    width: 100%;
+    max-width: 256px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--accent-primary);
+    box-shadow: 0 6px 18px rgba(112, 77, 255, 0.12);
+    margin: 0 auto;
+}
+
+/* Respect users who prefer reduced motion: show static image instead */
+@media (prefers-reduced-motion: reduce) {
+    header .profile .profile-video { display: none !important; }
+    header .profile .profile-fallback { display: block !important; }
+}
+
+header .profile ul {
+    display: flex;
+    align-items: center; /* center icons vertically in their row */
+    justify-content: center; /* center icons horizontally */
+    list-style: none;
+    gap: 0.5rem; /* spacing between icons */
+    margin: 0;
+    padding: 0;
+    width: fit-content; /* shrink to contents so it's centered with the image */
+}
+
+/* Make each icon a circular touch target and add hover/focus effects */
+header .profile ul li {
+    display: inline-flex;
+}
+
+header .profile ul a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px; /* larger circular hit target */
+    height: 64px; /* larger circular hit target */
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+header .profile ul a:hover {
+    transform: translateY(-4px) scale(1.03);
+    background-color: rgba(176,139,255,0.08); /* subtle purple tint */
+    box-shadow: 0 8px 20px rgba(124, 77, 255, 0.10);
+}
+
+header .profile ul a:active {
+    transform: translateY(-1px) scale(0.995);
+}
+
+header .profile ul a:focus-visible {
+    outline: 3px solid rgba(176, 139, 255, 0.24);
+    outline-offset: 3px;
+}
+
+/* Ensure icons inside the circular button are consistently sized and remain white via filter */
+header .profile ul img,
+header .profile ul a img {
+    width: 32px; /* larger glyph */
+    height: 32px; /* larger glyph */
+    object-fit: contain;
+    filter: grayscale(1) brightness(0) invert(1) !important;
+}
+
+/* Slight spacing between profile image and the icons */
+header .profile > img {
+    margin-bottom: 0.5rem;
+}
+
+/* Make sure title stays centered and visually aligned */
+header .title {
+    text-align: center;
+    margin-top: 0.25rem;
 }
 
 header address {
@@ -210,7 +448,7 @@ header address a {
 }
 
 header address a:hover {
-	color: orange;
+	color: var(--accent-primary-light);
 }
 
 /*
@@ -221,8 +459,9 @@ header address a:hover {
 
 
 .card h2{
-	color: var(--accent-primary);
-	margin-bottom: 3rem;
+	color: var(--accent-dark);
+	margin-bottom: 1.25rem;
+	font-size: clamp(1.1rem, 2.4vw, 1.5rem);
 }
 
 /* 
@@ -239,7 +478,6 @@ header address a:hover {
 }
 
 .card-container {
-
 	/*
 		If we add cool cosmetics to the card, we can add them here
 		NOT in the card class as that handles the card to card spacing 
@@ -247,11 +485,14 @@ header address a:hover {
 
 	display: grid;
 	grid-template-columns: 2fr 1fr;
-	grid-template-rows: var(--card-height);
+	/* allow rows to expand based on content so long paragraphs don't push buttons out of view */
+	grid-auto-rows: minmax(120px, auto);
 	grid-template-areas: "main-content sub-content";
 	max-width: 900px;
 	margin: 0 auto;
 	padding: 1rem;
+	column-gap: 2rem; /* horizontal spacing between image (sub-content) and text (main-content) */
+	align-items: start; /* align items to the top so long text doesn't push buttons out of view */
 }
 
 @media only screen and (min-width: 750px) {
@@ -270,53 +511,85 @@ header address a:hover {
 	grid-area: main-content;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-	height: 100%;
-	overflow: hidden;
+	/* allow content to size naturally */
+	height: auto;
+	overflow: visible;
+	padding-left: 1rem; /* breathing room between image and text */
+	padding-bottom: 1.5rem; /* give space for read-more so it's not cramped */
+	position: relative !important; /* ensure stacking context */
+	z-index: 3 !important; /* keep text and links above screenshots */
+}
+
+/* Keep main content overflow visible so the read-more area isn't clipped when paragraph is long */
+.card-main-content-container {
+    overflow: visible !important;
 }
 
 .card-sub-content-container {
     grid-area: sub-content;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* keep the screenshot up top and badges anchored below */
+    justify-content: space-between;
     align-items: center;
-    height: 100%;
-    overflow: hidden;
+    height: auto; /* let the content determine height */
+    overflow: visible; /* allow badges to remain visible instead of being clipped */
+    padding-right: 0.5rem;
+    position: relative;
+    z-index: 1; /* sit under the main content so links remain clickable */
 }
 
 .card-sub-content-container img {
     height: auto;
-    max-height: 80%;
+    /* slightly reduce the image max-height so there is guaranteed room for badges below */
+    max-height: 60%;
+    max-width: 100%;
     object-fit: contain;
+    border-radius: 8px; /* subtle rounded corners for screenshots */
+    pointer-events: none; /* don't capture clicks; keep links clickable */
 }
 
 .card-sub-content-container ul {
-    display: flex;
-    flex-direction: row;
+    /* Grid layout so badges are always visible. Shows up to 3 columns on desktop, then 2/1 on smaller screens */
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center; /* center the grid within the card area */
     align-items: center;
-    justify-content: flex-start;
     list-style: none;
-    flex-grow: 1;
-    max-height: 20%;
-	max-width: calc(var(--card-height) * 0.8); /* My genius knows no limit. Set to same width as img*/
-	overflow-y: none; 
-	overflow-x: auto;
+    gap: 0.6rem; /* spacing between badges */
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    align-self: center; /* ensure the list stays centered horizontally */
 }
 
-.card-sub-content-container ul li{
+/* Add padding to the text column so text doesn't touch the image */
+.card-main-content-container {
+    grid-area: main-content;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: auto; /* allow main content to expand with text */
+    overflow: visible; /* ensure read-more stays visible */
+    padding-left: 1rem; /* breathing room between image and text */
+}
+
+/* Add slight right padding to image container to keep visual gap consistent */
+.card-sub-content-container {
+    grid-area: sub-content;
     display: flex;
-	white-space: nowrap;
-    flex-grow: 1;
+    flex-direction: column;
+    /* keep the screenshot up top and badges anchored below */
+    justify-content: space-between;
+    align-items: center;
+    height: auto; /* let the content determine height */
+    overflow: visible; /* allow badges to remain visible instead of being clipped */
+    padding-right: 0.5rem;
 }
 
-.card-read-more a {
-	text-decoration: none;
-	color: grey;
-	margin: 0 2rem;
-}
-
-.card-read-more a:hover {
-	color: orange;
+/* Increase column gap a bit more for extra spacing */
+.card-container {
+    /* ...existing code... */
+    column-gap: 2rem; /* horizontal spacing between image (sub-content) and text (main-content) */
+    align-items: start; /* align items to the top so long text doesn't push buttons out of view */
 }
 
 /* SCROLLBAR ADJUSTMENT */
@@ -347,13 +620,19 @@ header address a:hover {
 
 footer
 {
-	background-image: linear-gradient(rgb(28, 31, 36), rgba(41, 212, 255, 0.1));
+	background-image: linear-gradient(rgb(15, 8, 22), rgba(124, 77, 255, 0.08));
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
 	height: 150px;
 	margin-top: 5rem;
+}
+
+footer p {
+	color: rgba(255,255,255,0.6);
+	font-size: 0.9rem;
+	margin: 0.25rem 0;
 }
 
 /*
@@ -364,39 +643,280 @@ footer
 
 @media screen and (max-width: 950px) {
 
-	header span:first-child {
+	header .profile {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 0;
 	}
 
-	header span ul img {
-		max-width: 48px;
+	header .profile ul a {
+		width: 56px;
+		height: 56px;
+	}
+
+	header .profile ul img {
+		width: 28px;
+		height: 28px;
 		padding: 0.5rem 1rem;
 	}
 }
 
 @media screen and (max-width: 750px) {
 
-	.card-container {
-		grid-template-columns: 1fr;
-		grid-template-rows: 70vw 1fr;
-		grid-template-areas: 
-			"sub-content"
-			"main-content";
+	header .profile ul a {
+		width: 48px;
+		height: 48px;
 	}
+
+	header .profile ul img {
+		width: 22px;
+		height: 22px;
+	}
+
+	.card-container {
+		display: block;
+	}
+
+	.card-main-content-container {
+		order: 2;
+	}
+
 	.card-sub-content-container {
-		 object-fit: contain;
+		order: 1;
+		width: 100%;
+		margin-bottom: 1rem; /* ensure space between stacked image and text on narrow screens */
+	}
+
+	.card-sub-content-container ul {
+		justify-content: center;
+	}
+
+	.header-bg {
+		top: 0 !important;
+		height: 100% !important;
+		object-position: center center !important;
+		transform: none !important;
+		filter: blur(4px) brightness(0.7) !important;
 	}
 }
 
-@media screen and (max-width: 500px) {
+@media (prefers-reduced-motion: reduce) {
+	* { transition: none !important; }
+}
 
-	h1 {
-		font-size: 3em;
-	}
-	h2 {
-		font-size: 1em;
-	}
+article.card{
+	background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.004));
+	border-radius: 12px;
+	padding: 0.75rem;
+	margin: 1.25rem 0;
+	transition: transform 220ms ease, box-shadow 220ms ease;
+	overflow: visible; /* allow children (badges/links) to be visible and clickable */
+}
+article.card:hover{
+	transform: translateY(-6px);
+	box-shadow: 0 18px 36px rgba(28,8,48,0.45);
+}
+
+/* Ensure the read-more link area is on top and fully interactive */
+.card-read-more {
+    /* Keep read-more in normal flow so it appears after the paragraph content */
+    position: static !important;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 1rem; /* spacing from the paragraph */
+    z-index: 9999 !important; /* ensure clickable above screenshots */
+}
+
+/* On small screens where the layout stacks, keep read-more in normal flow */
+@media screen and (max-width: 750px) {
+    .card-read-more {
+        position: static !important;
+        margin-top: 0.5rem !important;
+    }
+}
+
+.card-read-more a {
+    position: relative;
+    z-index: 21;
+    pointer-events: auto; /* ensure clickable */
+    display: inline-block;
+    text-decoration: none;
+    margin: 0 0.35rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 10px;
+    border: 1px solid rgba(124,77,255,0.18);
+    color: var(--accent-primary-light);
+    background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005));
+    font-weight: 600;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease, color 160ms ease;
+    box-shadow: none;
+}
+
+/* Robust button class used by card-read-more anchors */
+.btn {
+    display: inline-block !important;
+    padding: 0.45rem 0.85rem !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(124,77,255,0.18) !important;
+    background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005)) !important;
+    color: var(--accent-primary-light) !important;
+    -webkit-text-fill-color: var(--accent-primary-light) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease, color 160ms ease !important;
+}
+.btn:hover, .btn:focus {
+    color: var(--accent-primary) !important;
+    -webkit-text-fill-color: var(--accent-primary) !important;
+    background-color: rgba(176,139,255,0.08) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 22px rgba(124,77,255,0.08) !important;
+}
+.btn:active { transform: translateY(-1px) scale(0.995) !important; }
+.btn:focus-visible { outline: 3px solid rgba(176,139,255,0.16) !important; outline-offset: 3px !important; }
+
+/* High-specificity final override to ensure card buttons display correctly */
+html body article.card .card-read-more a,
+html body article.card .card-read-more a:link,
+html body article.card .card-read-more a:visited {
+    color: var(--accent-primary-light) !important;
+    background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005)) !important;
+    border: 1px solid rgba(124,77,255,0.18) !important;
+    text-decoration: none !important;
+}
+
+html body article.card .card-read-more a:hover,
+html body article.card .card-read-more a:focus {
+    color: var(--accent-primary) !important;
+    background-color: rgba(176,139,255,0.08) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 22px rgba(124,77,255,0.08) !important;
+}
+
+/* Final emergency override: ensure card read-more links look like buttons, not default blue links */
+html body article.card .card-read-more a,
+html body article.card .card-read-more a:link,
+html body article.card .card-read-more a:visited,
+html body article.card .card-read-more a * {
+    color: var(--accent-primary-light) !important;
+    -webkit-text-fill-color: var(--accent-primary-light) !important; /* iOS/Safari */
+    background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005)) !important;
+    border: 1px solid rgba(124,77,255,0.18) !important;
+    text-decoration: none !important;
+    padding: 0.45rem 0.85rem !important;
+    border-radius: 10px !important;
+    display: inline-block !important;
+}
+html body article.card .card-read-more a:hover,
+html body article.card .card-read-more a:focus {
+    color: var(--accent-primary) !important;
+    -webkit-text-fill-color: var(--accent-primary) !important;
+    background-color: rgba(176,139,255,0.08) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 22px rgba(124,77,255,0.08) !important;
+}
+
+/* Strong override: ensure read-more links are always above screenshots and clickable */
+article.card .card-main-content-container,
+article.card .card-main-content-container a,
+article.card .card-read-more,
+article.card .card-read-more a {
+    /* keep clickable and on top, but don't force positioning (preserve absolute placement) */
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+}
+
+/* Guarantee read-more links are always on top and clickable */
+.card-read-more,
+.card-read-more a {
+    z-index: 2147483646 !important; /* near the top */
+    pointer-events: auto !important;
+}
+
+/* Final safety: ensure any link inside a card is clickable above screenshots */
+article.card a, article.card a * {
+    position: relative !important;
+    z-index: 2147483647 !important;
+    pointer-events: auto !important;
+}
+
+/* Keep screenshots non-interactive */
+.card-sub-content-container img { pointer-events: none !important; }
+
+/* Ensure badge list and items are still interactive */
+.card-sub-content-container ul, .card-sub-content-container li, .card-sub-content-container li .lang { pointer-events: auto !important; }
+
+/* Allow badges inside sub-content to remain interactive, but prevent the screenshot itself from blocking clicks */
+.card-sub-content-container > img { pointer-events: none !important; }
+.card-sub-content-container ul, .card-sub-content-container li { pointer-events: auto !important; }
+
+/* Safety: if any pseudo-elements or ::before overlays exist on sub-content, disable their pointer events */
+.card-sub-content-container::before, .card-sub-content-container::after, .card-sub-content-container *::before, .card-sub-content-container *::after {
+    pointer-events: none !important;
+}
+
+/* Ensure screenshots never capture pointer events */
+.card-sub-content-container img {
+    pointer-events: none !important;
+}
+
+/* Header background video: full-bleed, behind header content */
+.header-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* enlarge a bit more to guarantee the blurry area reaches edges */
+    min-width: 110%;
+    min-height: 110%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    /* center the visual area and slightly bias upwards so top + bottom show */
+    transform: translate(-50%, -50%) scale(1.12);
+    object-position: center 40%; /* show slightly more top while keeping bottom visible */
+    /* strong enough blur + dim to keep text readable */
+    filter: blur(6px) brightness(0.62);
+    z-index: 0;
+    pointer-events: none; /* allow clicks through to content */
+    opacity: 0.95; /* subtle fade so content remains readable */
+}
+
+/* On narrow screens, simplify to avoid heavy transforms */
+@media screen and (max-width: 750px) {
+    .header-bg {
+        top: 0 !important;
+        left: 0 !important;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        width: 100% !important;
+        height: 100% !important;
+        transform: none !important;
+        object-position: center center !important;
+        filter: blur(4px) brightness(0.7) !important;
+    }
+}
+
+/* Subtle overlay between the video and content to improve contrast */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* sits above the video but below header content */
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(15,8,22,0.18) 0%, rgba(15,8,22,0.45) 60%, rgba(15,8,22,0.55) 100%);
+}
+
+/* Ensure everything except the background video sits above it */
+header > :not(.header-bg) {
+    position: relative;
+    z-index: 2;
+}
+
+/* If user prefers reduced motion (or video can't play), hide the bg video and fall back to the poster image */
+@media (prefers-reduced-motion: reduce) {
+    .header-bg { display: none !important; }
+    header { background-image: linear-gradient(rgba(124, 77, 255, 0.28), rgb(15, 8, 22)), url("resources/hero_image_generated.webp"); }
+    header::before { display: none !important; }
 }
