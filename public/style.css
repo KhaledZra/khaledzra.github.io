@@ -440,7 +440,7 @@ header address {
 }
 
 header address a {
-	color: var(--accent-primary-light);
+	color: var(--accent-primary);
 	padding: 0 2rem;
 	text-decoration: none;
 	font-size: large;
@@ -761,15 +761,15 @@ article.card:hover{
     border-radius: 10px !important;
     border: 1px solid rgba(124,77,255,0.18) !important;
     background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005)) !important;
-    color: var(--accent-primary-light) !important;
-    -webkit-text-fill-color: var(--accent-primary-light) !important;
+    color: var(--accent-primary) !important;
+    -webkit-text-fill-color: var(--accent-primary) !important;
     font-weight: 600 !important;
     text-decoration: none !important;
     transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease, color 160ms ease !important;
 }
 .btn:hover, .btn:focus {
-    color: var(--accent-primary) !important;
-    -webkit-text-fill-color: var(--accent-primary) !important;
+    color: var(--accent-primary-light) !important;
+    -webkit-text-fill-color: var(--accent-primary-light) !important;
     background-color: rgba(176,139,255,0.08) !important;
     transform: translateY(-3px) !important;
     box-shadow: 0 10px 22px rgba(124,77,255,0.08) !important;
@@ -933,7 +933,7 @@ header > :not(.header-bg) {
 .project-tab {
     background: transparent;
     border: 1px solid rgba(124,77,255,0.12);
-    color: var(--accent-primary-light);
+    color: var(--accent-primary);
     padding: 0.45rem 0.9rem;
     border-radius: 999px;
     cursor: pointer;
@@ -942,6 +942,7 @@ header > :not(.header-bg) {
 }
 .project-tab:hover {
     background-color: rgba(176,139,255,0.06);
+    color: var(--accent-primary-light);
     transform: translateY(-2px);
 }
 .project-tab.active,
@@ -1000,4 +1001,55 @@ header > :not(.header-bg) {
 @media screen and (max-width: 750px) {
     .card-meta { font-size: 0.92rem; }
     .card-meta ul { margin-left: 0.9rem; }
+}
+
+/* Global link color: dark purple by default, lighter purple on hover */
+/* Applies to textual links while leaving image-based links unaffected */
+a, a:link, a:visited {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+a:hover, a:focus {
+    color: var(--accent-primary-light);
+    text-decoration: underline;
+}
+
+/* Make project tabs match the same purple scheme (override previous slightly different styles) */
+.project-tab {
+    color: var(--accent-primary);
+    border: 1px solid rgba(124,77,255,0.12);
+    background: transparent;
+}
+.project-tab:hover {
+    background-color: rgba(176,139,255,0.06);
+    color: var(--accent-primary-light);
+    transform: translateY(-2px);
+}
+.project-tab.active,
+.project-tab[aria-selected="true"] {
+    background: linear-gradient(180deg, var(--accent-primary), var(--accent-primary-light));
+    color: white;
+    box-shadow: 0 8px 22px rgba(124,77,255,0.12);
+}
+
+/* Align .btn to the same color scheme: dark purple text, light purple on hover */
+.btn {
+    display: inline-block !important;
+    padding: 0.45rem 0.85rem !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(124,77,255,0.18) !important;
+    background: linear-gradient(180deg, rgba(124,77,255,0.02), rgba(124,77,255,0.005)) !important;
+    color: var(--accent-primary) !important;
+    -webkit-text-fill-color: var(--accent-primary) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease, color 160ms ease !important;
+}
+.btn:hover, .btn:focus {
+    color: var(--accent-primary-light) !important;
+    -webkit-text-fill-color: var(--accent-primary-light) !important;
+    background-color: rgba(176,139,255,0.08) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 22px rgba(124,77,255,0.08) !important;
 }
