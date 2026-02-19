@@ -41,29 +41,60 @@ function setActiveTab(button) {
 	button.setAttribute('aria-selected', 'true');
 }
 
+// Helper to safely read hash and normalize into category names we expect
+function readCategoryFromHash() {
+	const h = window.location.hash.replace('#', '').trim();
+	if (!h) return 'all';
+	// whitelist categories to avoid unexpected values
+	const allowed = ['all', 'personal', 'futuregames'];
+	return allowed.includes(h) ? h : 'all';
+}
+
 // initialize tabs after DOM is ready
 window.addEventListener('DOMContentLoaded', () => {
 	const tabsContainer = document.querySelector('.project-tabs');
 	if (tabsContainer) {
+		// Use delegated click handler; works in Brave/Chromium-based with any default prevention quirks
 		tabsContainer.addEventListener('click', (e) => {
 			const btn = e.target.closest('.project-tab');
 			if (!btn) return;
+			e.preventDefault();
 			const category = btn.dataset.category || 'all';
 			setActiveTab(btn);
 			filterProjects(category);
-			// update hash for bookmarking
+			// update hash for bookmarking; use location.hash to maximize compatibility
 			if (category === 'all') {
-				history.replaceState(null, '', window.location.pathname);
+				try { history.replaceState(null, '', window.location.pathname); } catch (err) { window.location.hash = ''; }
 			} else {
-				history.replaceState(null, '', `#${category}`);
+				try { history.replaceState(null, '', `#${category}`); } catch (err) { window.location.hash = `#${category}`; }
+			}
+		});
+
+		// keyboard support: Enter/Space should activate a focused tab
+		tabsContainer.addEventListener('keydown', (e) => {
+			if (e.key === 'Enter' || e.key === ' ') {
+				const btn = e.target.closest && e.target.closest('.project-tab') ? e.target.closest('.project-tab') : null;
+				if (!btn) return;
+				e.preventDefault();
+				btn.click();
 			}
 		});
 
 		// apply initial category from the hash (if present)
-		const hash = window.location.hash.replace('#', '');
-		const initial = hash || 'all';
+		const initial = readCategoryFromHash();
 		const initialBtn = document.querySelector(`.project-tab[data-category="${initial}"]`);
 		if (initialBtn) setActiveTab(initialBtn);
 		filterProjects(initial);
+
+		// ensure tabs respond to manual hash changes (back/forward / browser behavior differences)
+		window.addEventListener('hashchange', () => {
+			const cat = readCategoryFromHash();
+			const btn = document.querySelector(`.project-tab[data-category="${cat}"]`);
+			if (btn) setActiveTab(btn);
+			filterProjects(cat);
+		});
 	}
 });
+
+// export for debugging in console if needed (non-module global)
+window._siteTabs = { filterProjects, setActiveTab, readCategoryFromHash };
