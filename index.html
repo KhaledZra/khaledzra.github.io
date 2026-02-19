@@ -61,9 +61,106 @@
 		</address>
 	</header>
 	<main id="main">
+		<!-- Project category tabs: All / Personal / FutureGames -->
+		<div class="project-tabs" role="tablist" aria-label="Project categories">
+			<button class="project-tab active" data-category="all" aria-selected="true">All</button>
+			<button class="project-tab" data-category="personal" aria-selected="false">Personal / Hobby</button>
+			<button class="project-tab" data-category="futuregames" aria-selected="false">FutureGames</button>
+		</div>
 		<section>
-			<!--	Project Espionage Card	-->
-			<article class="card">
+
+			<!--	What The Blade Taught Me  -->
+			<article class="card" data-category="futuregames">
+				<section class="card-container">
+					<div class="card-sub-content-container">
+						<img src="resources/WTBTM.png" alt="What The Blade Taught Me screenshot" />
+						<ul class="scroll-horizontal">
+							<li class ="lang lang-csharp"></li>
+							<li class ="lang lang-unity"></li>
+						</ul>
+					</div>
+					<div class="card-main-content-container">
+						<h2>What The Blade Taught Me</h2>
+						<p>
+							What The Blade Taught Me is a 2D hack-and-slash game created for Group Project 2 at FutureGames. The game was built from scratch over four weeks with a small team of 3 programmers and 6 designers.
+						</p>
+						<div class="card-meta">
+							<p><strong>Role:</strong> Generalist Lead Programmer</p>
+							<p><strong>Contributions:</strong></p>
+							<ul>
+								<li>Player movement & dashing</li>
+								<li>Combat systems</li>
+								<li>Enemy AI</li>
+								<li>VFX & shaders</li>
+								<li>Boss fight design</li>
+							</ul>
+						</div>
+						<div class="card-read-more">
+							<a class="btn disabled" href="" aria-disabled="true">Itch.Io (coming soon)</a>
+						</div>
+					</div>
+				</section>
+			</article>
+
+			<!--	LavaEdge  -->
+			<article class="card" data-category="futuregames">
+				<section class="card-container">
+					<div class="card-sub-content-container">
+						<img src="resources/LavaEdge.png" alt="LavaEdge screenshot" />
+						<ul class="scroll-horizontal">
+							<li class ="lang lang-csharp"></li>
+							<li class ="lang lang-unity"></li>
+						</ul>
+					</div>
+					<div class="card-main-content-container">
+						<h2>LavaEdge</h2>
+						<p>
+							LavaEdge is a 3D endless runner created for Group Project 1 at FutureGames. Built from scratch over 3 weeks by a team of 5 programmers.
+						</p>
+						<div class="card-meta">
+							<p><strong>Role:</strong> Generalist Lead Programmer</p>
+							<p><strong>Contributions:</strong></p>
+							<ul>
+								<li>Infrastructure & tools</li>
+								<li>Main menu & UX</li>
+								<li>Scrum master / coordination</li>
+								<li>Post-processing & shaders</li>
+							</ul>
+						</div>
+						<div class="card-read-more">
+							<a class="btn" href="https://futuregames.itch.io/lavaedge" target="_blank" rel="noopener noreferrer">Itch.Io</a>
+						</div>
+					</div>
+				</section>
+			</article>
+
+			<!--	Vampire Survivors Clone  -->
+			<article class="card" data-category="futuregames">
+				<section class="card-container">
+					<div class="card-sub-content-container">
+						<img src="resources/VampireSurvivorsClone.png" alt="Vampire Survivors Clone screenshot" />
+						<ul class="scroll-horizontal">
+							<li class ="lang lang-csharp"></li>
+							<li class ="lang lang-unity"></li>
+						</ul>
+					</div>
+					<div class="card-main-content-container">
+						<h2>Vampire Survivors Clone</h2>
+						<p>
+							A simple clone of 2D Vampire Survivors which was part of Game Development with C# course.
+							The focus of this project was to learn new patterns and create scalable systems.
+							I learned how to create Object Pooling systems, Factory & Builder patterns, Singletons, and Generic State Machines.
+						</p>
+						<div class="card-read-more">
+							<a class="btn" href="https://khaledzraiqi.itch.io/superepicgame" target="_blank" rel="noopener noreferrer">Itch.Io</a>
+							<a class="btn" href="https://github.com/KhaledZra/FG_VampireSurvivors2D" target="_blank" rel="noopener noreferrer">Source Code</a>
+						</div>
+					</div>
+				</section>
+			</article>
+
+			<!--	Project Espionage Card (moved to personal) -->
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/project_espionage_ss.png" alt="Gameplay Screenshot" />
@@ -88,9 +185,9 @@
 					</div>
 				</section>
 			</article>
-			
+
 			<!--	SpriteBuster Card	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/spritebuster_ss.png" alt="Gameplay Screenshot" />
@@ -115,8 +212,8 @@
 				</section>
 			</article>
 
-			<!--	Project B Card	-->
-			<article class="card">
+			<!--	Project B Card (moved to personal) -->
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/project_b_ss.png" alt="Gameplay Screenshot" />
@@ -153,7 +250,7 @@
 			</article>
 
 			<!--	Castle Shalodie Card	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/castleshalodie_ss.png" alt="Gameplay Screenshot" />
@@ -177,7 +274,7 @@
 			</article>
 
 			<!--	Rollaball Card	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/rollaball_ss.png" alt="Gameplay Screenshot" />
@@ -202,7 +299,7 @@
 			</article>
 			
 			<!--	Snake Card	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/openglsnake_ss.png" alt="Gameplay Screenshot" />
@@ -228,7 +325,7 @@
 			</article>
 
 			<!--	Project X	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/project_x_ss.png" alt="Gameplay Screenshot" />

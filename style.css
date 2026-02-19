@@ -920,3 +920,84 @@ header > :not(.header-bg) {
     header { background-image: linear-gradient(rgba(124, 77, 255, 0.28), rgb(15, 8, 22)), url("resources/hero_image_generated.webp"); }
     header::before { display: none !important; }
 }
+
+/* Project tabs (category filter) */
+.project-tabs {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1.25rem 0 0.5rem 0;
+    flex-wrap: wrap;
+}
+.project-tab {
+    background: transparent;
+    border: 1px solid rgba(124,77,255,0.12);
+    color: var(--accent-primary-light);
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 160ms ease, transform 160ms ease, color 160ms ease;
+}
+.project-tab:hover {
+    background-color: rgba(176,139,255,0.06);
+    transform: translateY(-2px);
+}
+.project-tab.active,
+.project-tab[aria-selected="true"] {
+    background: linear-gradient(180deg, var(--accent-primary), var(--accent-primary-light));
+    color: white;
+    box-shadow: 0 8px 22px rgba(124,77,255,0.12);
+}
+
+/* hide card when filtered out */
+.card.is-hidden {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* empty state for no projects */
+#projects-empty {
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    padding: 2rem 1rem;
+}
+
+/* Role & Contributions meta styling for project cards */
+.card-meta {
+    margin-top: 0.6rem;
+    color: rgba(255,255,255,0.92);
+    font-size: 0.94rem;
+    line-height: 1.4;
+}
+.card-meta p {
+    margin: 0.25rem 0;
+}
+.card-meta p strong {
+    color: var(--accent-primary) !important;
+}
+.card-meta ul {
+    margin: 0.35rem 0 0 1rem;
+    padding: 0;
+    color: rgba(255,255,255,0.88);
+}
+.card-meta ul li::marker {
+    color: var(--accent-primary) !important;
+}
+.card-meta li {
+    margin: 0.18rem 0;
+    list-style-type: disc;
+    color: rgba(255,255,255,0.95);
+}
+
+/* ensure meta looks good on small screens */
+@media screen and (max-width: 750px) {
+    .card-meta { font-size: 0.92rem; }
+    .card-meta ul { margin-left: 0.9rem; }
+}
