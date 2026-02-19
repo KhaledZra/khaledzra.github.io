@@ -61,9 +61,15 @@
 		</address>
 	</header>
 	<main id="main">
+		<!-- Project category tabs: All / Personal / FutureGames -->
+		<div class="project-tabs" role="tablist" aria-label="Project categories">
+			<button class="project-tab active" data-category="all" aria-selected="true">All</button>
+			<button class="project-tab" data-category="personal" aria-selected="false">Personal / Hobby</button>
+			<button class="project-tab" data-category="futuregames" aria-selected="false">FutureGames</button>
+		</div>
 		<section>
 			<!--	Project Espionage Card	-->
-			<article class="card">
+			<article class="card" data-category="futuregames">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/project_espionage_ss.png" alt="Gameplay Screenshot" />
@@ -90,7 +96,7 @@
 			</article>
 			
 			<!--	SpriteBuster Card	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/spritebuster_ss.png" alt="Gameplay Screenshot" />
@@ -116,7 +122,7 @@
 			</article>
 
 			<!--	Project B Card	-->
-			<article class="card">
+			<article class="card" data-category="futuregames">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/project_b_ss.png" alt="Gameplay Screenshot" />
@@ -153,7 +159,7 @@
 			</article>
 
 			<!--	Castle Shalodie Card	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/castleshalodie_ss.png" alt="Gameplay Screenshot" />
@@ -177,7 +183,7 @@
 			</article>
 
 			<!--	Rollaball Card	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/rollaball_ss.png" alt="Gameplay Screenshot" />
@@ -202,7 +208,7 @@
 			</article>
 			
 			<!--	Snake Card	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/openglsnake_ss.png" alt="Gameplay Screenshot" />
@@ -228,7 +234,7 @@
 			</article>
 
 			<!--	Project X	-->
-			<article class="card">
+			<article class="card" data-category="personal">
 				<section class="card-container">
 					<div class="card-sub-content-container">
 						<img src="resources/project_x_ss.png" alt="Gameplay Screenshot" />
