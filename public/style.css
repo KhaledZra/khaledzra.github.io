@@ -967,5 +967,37 @@ header > :not(.header-bg) {
     text-align: center;
     color: rgba(255,255,255,0.7);
     padding: 2rem 1rem;
-    display: none;
+}
+
+/* Role & Contributions meta styling for project cards */
+.card-meta {
+    margin-top: 0.6rem;
+    color: rgba(255,255,255,0.92);
+    font-size: 0.94rem;
+    line-height: 1.4;
+}
+.card-meta p {
+    margin: 0.25rem 0;
+}
+.card-meta p strong {
+    color: var(--accent-primary) !important;
+}
+.card-meta ul {
+    margin: 0.35rem 0 0 1rem;
+    padding: 0;
+    color: rgba(255,255,255,0.88);
+}
+.card-meta ul li::marker {
+    color: var(--accent-primary) !important;
+}
+.card-meta li {
+    margin: 0.18rem 0;
+    list-style-type: disc;
+    color: rgba(255,255,255,0.95);
+}
+
+/* ensure meta looks good on small screens */
+@media screen and (max-width: 750px) {
+    .card-meta { font-size: 0.92rem; }
+    .card-meta ul { margin-left: 0.9rem; }
 }
