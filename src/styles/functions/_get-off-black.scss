@@ -2,5 +2,5 @@
 @use "sass:color";
 
 @function get-off-black($color: vars.$primary) {
-	@return color.scale($color, $saturation: -40%, $lightness: -69%);
+	@return color.scale($color, $saturation: -40%, $lightness: -60%);
 }
