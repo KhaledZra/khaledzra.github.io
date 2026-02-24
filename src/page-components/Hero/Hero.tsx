@@ -3,7 +3,7 @@ import styles from "./Hero.module.scss";
 const Hero = () => {
 	return (
 		<section className={styles["hero"]}>
-			<span className={styles["hero__introduction"]}>
+			<section className={styles["hero__introduction"]}>
 				<img
 					className={styles["hero__introduction__image"]}
 					src="https://picsum.photos/200/300"
@@ -18,7 +18,7 @@ const Hero = () => {
 						the <span>gamedeveloper</span>.
 					</p>
 				</span>
-			</span>
+			</section>
 		</section>
 	);
 };
