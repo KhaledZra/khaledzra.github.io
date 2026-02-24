@@ -19,6 +19,12 @@ const Hero = () => {
 					</p>
 				</span>
 			</section>
+			<section className={styles["hero__socials"]}>
+				<button className={styles["hero__socials__button"]}>Github</button>
+				<button className={styles["hero__socials__button"]}>LinkedIn</button>
+				<button className={styles["hero__socials__button"]}>Itch.io</button>
+				<button className={styles["hero__socials__button"]}>Resumé</button>
+			</section>
 		</section>
 	);
 };

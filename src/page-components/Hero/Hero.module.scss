@@ -5,11 +5,14 @@
 .hero {
 	// Static
 	$_shadow-size: 16px;
+	$_hero-bg: vars.$color-primary;
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: vars.$color-primary;
+	justify-content: space-evenly;
+
+	background-color: $_hero-bg;
 
 	padding: 1rem;
 	padding-top: 5rem;
@@ -47,10 +50,49 @@
 			}
 		}
 	}
+
+	&__socials {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		gap: min(3rem, 7vw);
+
+		&__button {
+			$_bgc: fn.highlight($_hero-bg);
+			color: white;
+			background-color: $_bgc;
+
+			padding: 0.25rem;
+			min-width: 7rem;
+
+			$_bt: solid 2px rgba(255, 255, 255, 0.42);
+			$_bb: solid 2px rgba(0, 0, 0, 0.42);
+			border: unset;
+
+			border-left: $_bt;
+			border-top: $_bt;
+			border-bottom: $_bb;
+			border-right: $_bb;
+
+			&:hover {
+				background-color: fn.highlight($_bgc);
+			}
+
+			&:active {
+				background-color: fn.get-active-color($_bgc);
+				border-left: $_bb;
+				border-top: $_bb;
+				border-bottom: $_bt;
+				border-right: $_bt;
+			}
+		}
+	}
 }
 
 @media screen and (max-width: vars.$breakpoint-phone) {
 	.hero {
+		justify-content: space-around;
 		&__introduction {
 			flex-direction: column;
 		}
