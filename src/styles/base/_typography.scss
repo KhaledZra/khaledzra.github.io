@@ -1,0 +1,75 @@
+@use "../variables/index.scss" as vars;
+@use "../functions/index.scss" as fn;
+@use "sass:color";
+
+h1 {
+	font-family: var(--font-ibm-plex-sans);
+	font-size: 3em;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-ibm-plex-sans);
+	font-weight: 500;
+	font-size: 1em;
+	color: vars.$color-secondary;
+
+	&:is(h2) {
+		font-size: 1.4em;
+	}
+
+	&:is(h3) {
+		font-size: 1em;
+	}
+
+	& span {
+		color: inherit;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+	}
+}
+
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 600;
+}
+
+p,
+a,
+li,
+button,
+span,
+section,
+article {
+	font-family: var(--font-ibm-plex-sans);
+	font-weight: 400;
+	font-size: 1em;
+
+	&:is(:not(button)) {
+		hyphens: auto;
+		word-break: break-word;
+	}
+
+	& span {
+		color: inherit;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+	}
+}
+
+a {
+	color: vars.$color-text-light;
+	text-decoration: underline dashed;
+	font-style: italic;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

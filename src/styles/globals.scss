@@ -1,0 +1,13 @@
+@use "./base/index.scss" as base;
+@use "./utilities/index.scss" as utils;
+@use "./variables/index.scss" as vars;
+@use "./functions/index.scss" as fn;
+
+:root {
+	color: vars.$color-text-light;
+	background-color: fn.get-off-black(vars.$color-primary);
+}
+
+ul {
+	list-style-type: none;
+}

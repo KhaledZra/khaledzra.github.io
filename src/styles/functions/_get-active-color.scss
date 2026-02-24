@@ -1,0 +1,5 @@
+@use "sass:color";
+
+@function get-active-color($color) {
+	@return color.scale($color, $saturation: -10%, $lightness: -5%);
+}

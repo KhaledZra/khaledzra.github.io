@@ -1,11 +1,62 @@
 # Khaled's portfolio 💼
+
 This portfolio was made to showcase my skills and experiences in a neat "ready-to-go" place. <br />
 
 ## Features
-* All about Khaled
-* Project listings
-* Social links
-* Contact information
+
+- All about Khaled
+- Project listings
+- Social links
+- Contact information
 
 ## Collaborations
+
 The portrayal of this portfolio (frontend) was made in tandem with <a href="https://github.com/VonRiddarn">Timmy "VonRiddarn" Öhman</a>.<br />
+
+## NOTES:
+
+Project cards:
+
+- Color code categoryt using BEM.
+
+```ts
+Project links: {
+	 itch?,
+	 source?,
+	 docs?,
+	 generics[
+		{
+			label,
+			href,
+		}
+	 ]?
+}
+```
+
+```ts
+technology {
+	id,
+	icon,
+	label
+}
+```
+
+Projects
+
+```ts
+{
+	// META
+	title,
+	shortdescMd,
+	longdescMd,
+	technologies[]
+	// Publishing
+	mainImage,
+	subImages[],
+	links?,
+	roles[{
+		label,
+		contributions[]
+	}]
+}
+```

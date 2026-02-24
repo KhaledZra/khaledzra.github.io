@@ -1,0 +1,5 @@
+@use "sass:color";
+
+@function highlight($color, $l: +35%) {
+	@return color.scale($color, $lightness: $l, $saturation: -15%);
+}

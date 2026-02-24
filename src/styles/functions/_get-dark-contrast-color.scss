@@ -1,0 +1,5 @@
+@use "sass:color";
+
+@function get-dark-contrast-color($color) {
+	@return color.scale($color, $saturation: +23%, $lightness: -42%);
+}
