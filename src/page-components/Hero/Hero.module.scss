@@ -1,0 +1,58 @@
+@use "../../styles/variables/index.scss" as vars;
+@use "../../styles/functions/index.scss" as fn;
+@use "sass:color";
+
+.hero {
+	// Static
+	$_shadow-size: 16px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: vars.$color-primary;
+
+	padding: 1rem;
+	padding-top: 5rem;
+
+	max-height: 100vh;
+	max-height: 100svh;
+	height: 80svh;
+
+	border-bottom: solid calc($_shadow-size * 0.5) rgba(0, 0, 0, 0.42);
+	box-shadow: 0 $_shadow-size $_shadow-size rgba(0, 0, 0, 0.33);
+	margin-bottom: calc($_shadow-size * 3);
+
+	&__introduction {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		max-height: fit-content;
+
+		gap: 1rem;
+
+		& p {
+			color: color.scale(vars.$color-text-light, $lightness: -24%);
+			font-size: x-large;
+		}
+
+		&__image {
+			border-radius: vars.$size-border-radius-regular;
+		}
+
+		&__tagline {
+			&__gamedev {
+				& span {
+					color: vars.$color-secondary;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: vars.$breakpoint-phone) {
+	.hero {
+		&__introduction {
+			flex-direction: column;
+		}
+	}
+}
