@@ -1,0 +1,11 @@
+@use "../variables/index.scss" as vars;
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	flex-grow: 1;
+
+	max-width: vars.$size-content-max-width;
+}
