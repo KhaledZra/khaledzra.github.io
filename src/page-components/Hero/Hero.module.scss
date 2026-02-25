@@ -7,12 +7,13 @@
 	$_shadow-size: 16px;
 	$_hero-bg: vars.$color-primary;
 
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
 
-	background-color: $_hero-bg;
+	background: linear-gradient(rgba($_hero-bg, 0.69), rgba($_hero-bg, 0.69));
 
 	padding: 1rem;
 	padding-top: 5rem;
@@ -24,6 +25,21 @@
 	border-bottom: solid calc($_shadow-size * 0.5) rgba(0, 0, 0, 0.42);
 	box-shadow: 0 $_shadow-size $_shadow-size rgba(0, 0, 0, 0.33);
 	margin-bottom: calc($_shadow-size * 3);
+
+	overflow: hidden;
+
+	&__bg {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		background: url("backgrounds/hero-bg.webp");
+		filter: blur(8px);
+
+		z-index: -1;
+	}
 
 	&__introduction {
 		display: flex;
@@ -63,17 +79,13 @@
 			color: white;
 			background-color: $_bgc;
 
-			padding: 0.25rem;
+			padding: 0.5rem;
 			min-width: 7rem;
 
-			$_bt: solid 2px rgba(255, 255, 255, 0.42);
-			$_bb: solid 2px rgba(0, 0, 0, 0.42);
 			border: unset;
-
-			border-left: $_bt;
-			border-top: $_bt;
-			border-bottom: $_bb;
-			border-right: $_bb;
+			border: solid 1px color.scale($_bgc, $lightness: +25%);
+			border-radius: vars.$size-border-radius-regular;
+			box-shadow: 0 0 16px color.scale($_bgc, $lightness: +25%);
 
 			&:hover {
 				background-color: fn.highlight($_bgc);
@@ -81,10 +93,6 @@
 
 			&:active {
 				background-color: fn.get-active-color($_bgc);
-				border-left: $_bb;
-				border-top: $_bb;
-				border-bottom: $_bt;
-				border-right: $_bt;
 			}
 		}
 	}
