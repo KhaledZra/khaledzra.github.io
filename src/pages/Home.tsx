@@ -13,9 +13,9 @@ const Home = () => {
 					<h2>About me</h2>
 					<p>
 						My name's <strong>Khaled</strong>, I'm a {age}-year-old{" "}
-						<strong>fullstack developer</strong> with a higher vocational education in web
-						development from <strong>Västra Götaland, Sweden</strong>. I have since moved to Malmö
-						where I am undergoing studies as a <strong>gameplay programmer</strong> at{" "}
+						<strong>fullstack developer</strong> from <strong>Västra Götaland, Sweden</strong>
+						with a higher vocational education in web development. Though I currently live in
+						Malmö where I am undergoing studies as a <strong>gameplay programmer</strong> at{" "}
 						<strong>FutureGames</strong>.
 					</p>
 					<p>
