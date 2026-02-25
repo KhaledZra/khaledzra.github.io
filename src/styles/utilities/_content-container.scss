@@ -21,7 +21,16 @@
 	h6,
 	p,
 	span,
-	a {
+	a,
+	ul,
+	ol {
 		width: 100%;
+	}
+
+	ul,
+	ol {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 }

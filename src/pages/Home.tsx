@@ -1,6 +1,10 @@
 import Hero from "../page-components/Hero/Hero";
+import { getAge } from "../utils/getAge";
 
 const Home = () => {
+	// Maybe overkill, but using infered age makes sure we never leave stale data in the portfolio.
+	const age = getAge(new Date(1997, 11, 17)); // OBS: Index 0 for month. (11 is December)
+
 	return (
 		<>
 			<Hero />
@@ -8,17 +12,21 @@ const Home = () => {
 				<section className="content-container">
 					<h2>About me</h2>
 					<p>
-						My name's Khaled, and I am a 28-year-old aspiring game developer from Sweden. I'm
-						currently studying in Malmö at FutureGames as gameplay programmer. I have a higher
-						vocational education in web development as a full-stack developer. My big love for
-						games and game development started my career path and has been the main driving force
-						for me to learn and create games. My biggest strength is my ability to learn and adapt
-						to new situations and challenges. Please check out my projects below and feel free to
-						contact me if you have any questions or want to work with me!
+						My name's <strong>Khaled</strong>, I'm a {age}-year-old{" "}
+						<strong>fullstack developer</strong> with a higher vocational education in web
+						development from <strong>Västra Götaland, Sweden</strong>. I have since moved to Malmö
+						where I am undergoing studies as a <strong>gameplay programmer</strong> at{" "}
+						<strong>FutureGames</strong>.
+					</p>
+					<p>
+						I am doing well in my studies, which I am sure is a result of my huge ambition and
+						love for game development as a craft. I would say that my greatest strength is my
+						ability to <strong>adapt to new environments and frameworks</strong>. I have become
+						comfortable with being uncomfortable.
 					</p>
 				</section>
 				<section className="content-container">
-					<h2>My Games</h2>
+					<h2>My projects</h2>
 				</section>
 			</section>
 		</>
