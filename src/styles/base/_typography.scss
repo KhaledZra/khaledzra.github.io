@@ -3,8 +3,10 @@
 @use "sass:color";
 
 h1 {
-	font-family: var(--font-ibm-plex-sans);
+	font-family: vars.$font-mono;
 	font-size: 3em;
+	font-weight: 800;
+	letter-spacing: -0.05em;
 }
 
 h2,
@@ -12,7 +14,8 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-ibm-plex-sans);
+	font-family: vars.$font-primary;
+
 	font-weight: 500;
 	font-size: 1em;
 	color: vars.$color-secondary;
@@ -47,7 +50,9 @@ button,
 span,
 section,
 article {
-	font-family: var(--font-ibm-plex-sans);
+	font-family: vars.$font-primary;
+	letter-spacing: -0.02em;
+
 	font-weight: 400;
 	font-size: 1em;
 
