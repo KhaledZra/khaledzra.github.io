@@ -1,0 +1,402 @@
+:root {
+
+	--background-primary: #1c1f24;
+	--background-secondary: #272b31;
+	--background-tertiary: #464d57;
+
+	--accent-primary: #00aad4;
+	--accent-primary-light: #29d4ff;
+	--accent-tertiary: #272b31;
+
+	--card-height: 300px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	/*outline: dashed 1px red;*/
+}
+
+/*
+	----------------------------
+				BASE			
+	----------------------------
+*/
+
+h1 {
+	font-size: 4em;
+	color: var(--accent-primary-light);
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+img {
+	border-radius: 2%;
+}
+
+body {
+	background-color: var(--background-primary);
+	color: white;
+}
+
+/*
+	--------------------------------------------
+				COSMETICS AND LAYOUT			
+	--------------------------------------------
+*/
+
+.divider-line {
+	background-color: var(--accent-primary-light);
+	height: 1px;
+	width: 33%;
+	margin: 3rem auto;
+}
+
+.lang {
+	background-color: var(--background-secondary);
+	display: inline-block;
+	padding: 0.4rem 1rem;
+	border-radius: 25%;
+	color: var(--background-primary);
+}
+
+/*
+No need for this as of now
+.lang:hover {
+	background-color: var(--background-tertiary);
+}*/
+
+.lang::before {
+	color: white;
+}
+
+/* LANGUAGE CLASSES */
+
+.lang-csharp::before {
+	content: "C#";
+}
+
+.lang-cpp::before {
+	content: "C++";
+}
+
+.lang-opengl::before {
+	content: "OpenGL";
+}
+
+.lang-unreal::before {
+	content: "Unreal";
+}
+
+.lang-unity::before {
+	content: "Unity";
+}
+
+.lang-monogame::before {
+	content: "MonoGame";
+}
+
+.lang-blazor::before {
+	content: "Blazor";
+}
+
+.lang-docker::before {
+	content: "Docker";
+}
+
+.lang-githubactions::before {
+	content: "Github Actions";
+}
+
+.lang-heroku::before {
+	content: "Heroku";
+}
+
+.lang-mongodb::before {
+	content: "MongoDB";
+}
+
+.lang-xunit::before {
+	content: "XUnit";
+}
+
+.lang-signalr::before {
+	content: "SignalR";
+}
+
+.lang-dotnet::before {
+	content: ".NET";
+}
+
+.lang-mariadb::before {
+	content: "MariaDB";
+}
+
+.lang-dapper::before {
+	content: "Dapper";
+}
+
+
+
+/*
+	------------------------------
+				HEADER			
+	------------------------------
+*/
+
+header {
+
+	background-image: linear-gradient(rgba(41, 212, 255, 0.33), rgb(28, 31, 36)), url("resources/hero_image_generated.webp");
+	background-size: cover;
+
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	text-align: center;
+	padding: 1rem;
+	margin-bottom: 5rem;
+}
+
+header p {
+	margin: 2rem 0;
+	max-width: 900px;
+}
+
+header span:first-child {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1rem;
+}
+
+header span img {
+	grid-column-start: 2;
+	width: 100%;
+	height: 100%;
+	max-width: 256px;
+	min-width: 128px;
+	object-fit: cover;
+}
+
+header span ul {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	list-style: none;
+}
+
+header span ul 	img {
+	max-width: 64px;
+	min-width: 32px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+header address {
+	display: flex;
+	width: 100%;
+	max-width: 900px;
+}
+
+header address a {
+	color: var(--accent-primary-light);
+	padding: 0 2rem;
+	text-decoration: none;
+	font-size: large;
+	margin-bottom: 2rem;
+}
+
+header address a:hover {
+	color: orange;
+}
+
+/*
+	-----------------------------
+				CARDS			
+	-----------------------------
+*/
+
+
+.card h2{
+	color: var(--accent-primary);
+	margin-bottom: 3rem;
+}
+
+/* 
+	This is basically a carbon copy of the divider class
+	But doing it this way means we don't have to change the HTML each time a new card is added
+*/
+.card:not(:last-child)::after {
+	display: block;
+	content: "";
+	background-color: var(--accent-primary-light);
+	height: 1px;
+	width: 33%;
+	margin: 3rem auto;
+}
+
+.card-container {
+
+	/*
+		If we add cool cosmetics to the card, we can add them here
+		NOT in the card class as that handles the card to card spacing 
+	*/
+
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: var(--card-height);
+	grid-template-areas: "main-content sub-content";
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+@media only screen and (min-width: 750px) {
+	.card:nth-of-type(even) .card-container {
+		grid-template-columns: 1fr 2fr;
+		grid-template-areas: "sub-content main-content";
+	}
+	
+	.card:nth-of-type(even) .card-container .card-read-more{
+		text-align: right;
+	}
+}
+
+
+.card-main-content-container {
+	grid-area: main-content;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	height: 100%;
+	overflow: hidden;
+}
+
+.card-sub-content-container {
+    grid-area: sub-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-sub-content-container img {
+    height: auto;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.card-sub-content-container ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    list-style: none;
+    flex-grow: 1;
+    max-height: 20%;
+	max-width: calc(var(--card-height) * 0.8); /* My genius knows no limit. Set to same width as img*/
+	overflow-y: none; 
+	overflow-x: auto;
+}
+
+.card-sub-content-container ul li{
+    display: flex;
+	white-space: nowrap;
+    flex-grow: 1;
+}
+
+.card-read-more a {
+	text-decoration: none;
+	color: grey;
+	margin: 0 2rem;
+}
+
+.card-read-more a:hover {
+	color: orange;
+}
+
+/* SCROLLBAR ADJUSTMENT */
+/* WebKit browsers */
+.card-sub-content-container ul::-webkit-scrollbar {
+    height: 8px;
+}
+
+.card-sub-content-container ul::-webkit-scrollbar-thumb {
+    background-color: var(--background-tertiary);
+}
+
+.card-sub-content-container ul::-webkit-scrollbar-track {
+    background: var(--background-secondary)
+}
+
+/* Firefox */
+.card-sub-content-container ul {
+    scrollbar-width: thin;
+    scrollbar-color: var(--background-tertiary) var(--background-secondary);
+}
+
+/*
+	------------------------------
+				FOOTER			
+	------------------------------
+*/
+
+footer
+{
+	background-image: linear-gradient(rgb(28, 31, 36), rgba(41, 212, 255, 0.1));
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	height: 150px;
+	margin-top: 5rem;
+}
+
+/*
+	-------------------------------------
+				MEDIA QUERIES			
+	-------------------------------------
+*/
+
+@media screen and (max-width: 950px) {
+
+	header span:first-child {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0;
+	}
+
+	header span ul img {
+		max-width: 48px;
+		padding: 0.5rem 1rem;
+	}
+}
+
+@media screen and (max-width: 750px) {
+
+	.card-container {
+		grid-template-columns: 1fr;
+		grid-template-rows: 70vw 1fr;
+		grid-template-areas: 
+			"sub-content"
+			"main-content";
+	}
+	.card-sub-content-container {
+		 object-fit: contain;
+	}
+}
+
+@media screen and (max-width: 500px) {
+
+	h1 {
+		font-size: 3em;
+	}
+	h2 {
+		font-size: 1em;
+	}
+}
