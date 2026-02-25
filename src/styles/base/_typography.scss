@@ -18,11 +18,11 @@ h6 {
 	color: vars.$color-secondary;
 
 	&:is(h2) {
-		font-size: 1.4em;
+		font-size: 2em;
 	}
 
 	&:is(h3) {
-		font-size: 1em;
+		font-size: 1.4em;
 	}
 
 	& span {
