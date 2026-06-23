@@ -149,6 +149,7 @@ header p {
 .lang-dotnet::after { content: ".NET"; }
 .lang-mariadb::after { content: "MariaDB"; }
 .lang-dapper::after { content: "Dapper"; }
+.lang-angelscript::after { content: "AngelScript"; }
 
 /* Icon colors / images per technology (use provided svgrepo SVGs when available) */
 .lang-cpp::before {
@@ -271,6 +272,18 @@ header p {
     color: white;
     font-size: 14px;
     content: "D"; /* render the letter inside the square */
+}
+
+/* AngelScript: show a centered A */
+.lang-angelscript::before {
+    background-color: #e67e22;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: white;
+    font-size: 14px;
+    content: "A"; /* render the letter inside the square */
 }
 
 /* Small responsiveness */
@@ -484,7 +497,7 @@ header address a:hover {
 	*/
 
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 1.7fr 1.3fr;
 	/* allow rows to expand based on content so long paragraphs don't push buttons out of view */
 	grid-auto-rows: minmax(120px, auto);
 	grid-template-areas: "main-content sub-content";
@@ -497,7 +510,7 @@ header address a:hover {
 
 @media only screen and (min-width: 750px) {
 	.card:nth-of-type(even) .card-container {
-		grid-template-columns: 1fr 2fr;
+		grid-template-columns: 1.3fr 1.7fr;
 		grid-template-areas: "sub-content main-content";
 	}
 	
@@ -540,13 +553,18 @@ header address a:hover {
 }
 
 .card-sub-content-container img {
+    width: 100%;
     height: auto;
-    /* slightly reduce the image max-height so there is guaranteed room for badges below */
-    max-height: 60%;
     max-width: 100%;
     object-fit: contain;
     border-radius: 8px; /* subtle rounded corners for screenshots */
     pointer-events: none; /* don't capture clicks; keep links clickable */
+}
+
+.card-sub-content-container img.img-small {
+    width: 80%;
+    height: auto;
+    max-width: 100%;
 }
 
 .card-sub-content-container ul {
